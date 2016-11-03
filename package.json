@@ -3,20 +3,11 @@
   "version": "1.0.0",
   "description": "Attempt to build express.js app",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/losko/CodeNameSite.git"
-  },
   "author": "Losko",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/losko/CodeNameSite/issues"
-  },
-  "homepage": "https://github.com/losko/CodeNameSite#readme",
   "dependencies": {
-    "mongoose": "4.6.5"
+    "express": "4.14.0",
+    "mongoose": "4.6.5",
+    "pug": "2.0.0-beta6"
   }
 }
