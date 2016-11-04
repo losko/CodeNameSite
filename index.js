@@ -8,14 +8,9 @@ let config = require('./server/config/config')[env]
 
 require('./server/config/database')(config)
 require('./server/config/express')(config, app)
+require('./server/config/routers')(app)
 
 let port = process.env.port || 80
-
-app.get('/', (req, res) => {
-    "use strict";
-    mongoose.connect(config.db)
-    res.render('index')
-})
 
 app.listen(config.port)
 
