@@ -1,7 +1,6 @@
 module.exports = (app) => {
     "use strict";
     app.get('/', (req, res) => {
-        mongoose.connect(config.db)
         res.render('index')
     })
 
