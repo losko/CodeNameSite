@@ -17,4 +17,6 @@ module.exports = (config) => {
     })
 
     db.on('error', err => console.log('Database error: ' + err))
+
+    require('../data/User').seedAdminUser()
 }
