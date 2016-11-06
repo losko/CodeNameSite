@@ -29,5 +29,35 @@ module.exports = {
                     })
                 })
         }
+    },
+    login: (req, res) => {
+        "use strict";
+        res.render('users/login')
+    },
+    authenticate: (req, res) => {
+        "use strict";
+        let inputUser = req.body
+
+        User
+            .findOne({ username: inputUser.username })
+            .then(user => {
+                if (!user.authenticate(inputUser.password)) {
+                    res.render('users/login', { globalError: 'Invalid username or password' })
+                } else {
+                    req.logIn(user, (err, user) => {
+                        if (err) {
+                            res.render('users/login', { globalError: 'Ooops 500' })
+                            return
+                        }
+
+                        res.redirect('/')
+                    })
+                }
+            })
+    },
+    logout: (req, res) => {
+        "use strict";
+        req.logout()
+        res.redirect('/')
     }
 }

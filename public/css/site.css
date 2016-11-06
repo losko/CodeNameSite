@@ -17,3 +17,6 @@ h1 {
 .delimer {
     margin-right: 25px;
 }
+#logout-form {
+    display: inline-block ;
+}
