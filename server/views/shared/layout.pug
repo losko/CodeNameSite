@@ -1,27 +1,70 @@
-doctype
-html
-    head
-        title Hello!
-        link(href="/css/site.css" rel="stylesheet")
-    body
-        .container
-            ul.menu
-                li
-                    a(href="/") Home
-                li
-                    a(href="/about") About
-                li.delimiter
-                if(currentUser)
-                    li
-                        span= currentUser.username
-                    li
-                        form#logout-form(method="post" action="/users/logout")
-                            a(href="javascript:document.getElementById('logout-form').submit()") logOut
-                else
-                    li
-                        a(href="/users/register") Register
-                    li
-                        a(href="users/login") Log In
-            if (globalError)
-                h3= globalError
-            block main-content
+doctype html
+head
+    title Bootstrap Case
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/left-nav-bar.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        //top-navbar//
+nav.navbar.navbar-inverse
+    .container-fluid
+        .navbar-header
+            a.navbar-brand(href='#') WebSiteName
+        ul.nav.navbar-nav
+            li.active
+                a(href='#') Home
+            li.dropdown
+            li
+                a(href='#') Page 2
+        ul.nav.navbar-nav.navbar-right
+            li
+                a(href='#')
+                    span.glyphicon.glyphicon-user
+                    |  Sign Up
+            li
+                a(href='#')
+                    span.glyphicon.glyphicon-log-in
+                    |  Login
+                //left-navbar//
+.navbar.navbar-inverse.navbar-fixed-left
+    .panel-group
+        .panel.panel-default
+            .panel-heading
+                h4.panel-title
+                    a(data-toggle='collapse', href='#collapse1') Graphics
+            #collapse1.panel-collapse.collapse
+                ul.list-group
+                    li.list-group-item
+                        a(href='photography.html') Photography
+                    li.list-group-item
+                        a(href='drawing.html') Drawing
+                    li.list-group-item
+                        a(href='3dmodels.html') 3D Models
+                    li.list-group-item
+                        a(href='otherGraphics.html') Other
+    .panel-group
+        .panel.panel-default
+            .panel-heading
+                h4.panel-title
+                    a(data-toggle='collapse', href='#collapse3') Literature
+            #collapse3.panel-collapse.collapse
+                ul.list-group
+                    li.list-group-item
+                        a(href='poetry.html') Poetry
+                    li.list-group-item
+                        a(href='poems.html') Poems
+                    li.list-group-item
+                        a(href='novels') Novels
+                    li.list-group-item
+                        a(href='otherLiterature.html') Other
+    form.form-search-leftNav-my
+        #custom-search-input
+            .input-group.col-md-12
+                input.form-control.input-sm(type='text', placeholder='Search')
+                span.input-group-btn
+                    button.btn.btn-info.btn-sm(type='button')
+                        i.glyphicon.glyphicon-search
+
+block main-content
