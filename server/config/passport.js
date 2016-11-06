@@ -6,7 +6,10 @@ module.exports = () => {
     "use strict";
     passport.use(new LocalPassport({
         usernameField: 'username',
-        passwordField: 'password'
+        firstNameField: 'firstName',
+        lastNameField: 'lastName',
+        passwordField: 'password',
+        emailField: 'email'
         },
         (username, password, done) => {
         User

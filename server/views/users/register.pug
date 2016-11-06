@@ -5,21 +5,29 @@ block main-content
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Registration
-                    form.form-login-my(method='post', action='/')
-                        .form-group
-                            label.label-login-my(for='firstName') First name:
-                            input#firstName.form-control(type='text')
-                        .form-group
-                            label.label-login-my(for='secondName') Second name
-                            input#secondName.form-control(type='text')
-                        .form-group
-                            label.label-login-my(for='email') Email address:
-                            input#email.form-control(type='email')
-                        .form-group
-                            label.label-login-my(for='pwd') Password:
-                            input#pwd.form-control(type='password')
-                        .checkbox
-                            label.label-login-my
-                                input(type='checkbox')
-                                |  Remember me
-                        input(type='submit', value='Create')
+                    form.form-login-my(method="post" action="/users/create")
+                        label.label-login-my(for="username") Username
+                        br
+                        input.label-login-my(type="text" name="username" id="username" value=username)
+                        br
+                        label.label-login-my(for="password") Password
+                        br
+                        input.label-login-my(type="password" name="password" id="password")
+                        br
+                        label.label-login-my(for="confirm-password") Confirm Password
+                        br
+                        input.label-login-my(type="password" name="confirmPassword" id="confirm-password")
+                        br
+                        label.label-login-my(for="first-name") First Name
+                        br
+                        input.label-login-my(type="text" name="firstName" id="first-name")
+                        br
+                        label.label-login-my(for="last-name") Last Name
+                        br
+                        input.label-login-my(type="text" name="lastName" id="last-name")
+                        br
+                        label.label-login-my(for="email") Email
+                        br
+                        input.label-login-my(type="email" name="email" id="email")
+                        br
+                        input.label-login-my(type="submit" value="Create")

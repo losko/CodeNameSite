@@ -8,3 +8,7 @@ Added Css and JS files.
 =======
 Сега ще опитам да вкарам моя статичен хтмл в прокта...
 Edited files server/users/login.pug, register.pug.
+---
+Сега трябва да накрам апп-а да взема входа от новия хтмл ....
+Edited register funcionality.
+Some bug fixed in left-nav-bav.css

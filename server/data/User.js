@@ -7,6 +7,7 @@ let userSchema = mongoose.Schema({
     username: { type: String, required: requiredValidationMessage, unique: true},
     firstName: { type: String, required: requiredValidationMessage},
     lastName: { type: String, required: requiredValidationMessage},
+    email: { type: String, required: requiredValidationMessage},
     salt: String,
     hashedPass: String,
     roles: [String]

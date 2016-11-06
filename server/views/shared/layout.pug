@@ -1,6 +1,6 @@
 doctype html
 head
-    title Bootstrap Case
+    title Code-Name-Site
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -21,15 +21,25 @@ nav.navbar.navbar-inverse
             li.dropdown
             li
                 a(href='#') Page 2
-        ul.nav.navbar-nav.navbar-right
-            li
-                a(href='/users/register')
-                    span.glyphicon.glyphicon-user
-                    |  Sign Up
-            li
-                a(href='/users/login')
-                    span.glyphicon.glyphicon-log-in
-                    |  Login
+        if(currentUser)
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href="/users/register")
+                        span(class="glyphicon glyphicon-user user-my")= currentUser.username
+                li
+                    form#logout-form(method="post" action="/users/logout")
+                    a(href="javascript:document.getElementById('logout-form').submit()") LogOut
+                        span(class="glyphicon glyphicon-log-out log-out-my")
+        else
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href="/users/register")
+                        span.glyphicon.glyphicon-user
+                        |  Sign Up
+                li
+                    a(href="users/login")
+                        span.glyphicon.glyphicon-log-in
+                        |  Login
                 //left-navbar//
 .navbar.navbar-inverse.navbar-fixed-left
     .panel-group
