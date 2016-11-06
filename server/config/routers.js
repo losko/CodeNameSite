@@ -1,4 +1,5 @@
-let controllers = require('../controllers')
+const controllers = require('../controllers')
+const auth = require('../config/auth')
 
 module.exports = (app) => {
     "use strict";
@@ -10,6 +11,8 @@ module.exports = (app) => {
     app.get('/users/login', controllers.users.login)
     app.post('/users/authenticate', controllers.users.authenticate)
     app.post('/users/logout', controllers.users.logout)
+
+    app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
 
     app.all('*', (req, res) => {
         res.status(404)
