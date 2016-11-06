@@ -8,27 +8,42 @@ module.exports = {
     create: (req, res) => {
         let user = req.body
 
-        if (user.password !== user.confirmPassword) {
-            user.globalError = 'Passwords do not match!'
-            res.render('users/register', user)
-        } else {
-            user.salt = encryption.generateSalt()
-            user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
+        User.findOne({ username: user.username}, function (err, person) {
+            if (err) {
 
-            User
-                .create(user)
-                .then(user => {
-                    "use strict";
-                    req.logIn(user, (err, user) => {
-                        if (err) {
-                            res.render('users/register', { globalError: 'Ooops 500' })
-                            return
-                        }
+            } else if (person) {
+                res.render('users/register', { globalError: 'Username already exist' })
+                return
+            }
+            else {
+                if (user.password !== user.confirmPassword) {
+                    user.globalError = 'Passwords do not match!'
+                    res.render('users/register', user)
+                } else {
+                    user.salt = encryption.generateSalt()
+                    user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
 
-                        res.redirect('/')
-                    })
-                })
-        }
+                    User
+                        .create(user)
+                        .then(user => {
+                            "use strict";
+                            req.logIn(user, (err, user) => {
+                                if (err) {
+                                    res.render('users/register', { globalError: 'Ooops 500' })
+                                    return
+                                }
+
+                                res.redirect('/')
+                            })
+                        })
+                }
+            }
+
+
+        })
+
+
+
     },
     login: (req, res) => {
         "use strict";
