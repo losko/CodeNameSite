@@ -5,7 +5,6 @@ Creathed check function to check if username already exist..
 Added Top and left nav-bars.
 Added Css and JS files.
 ---
-=======
 Сега ще опитам да вкарам моя статичен хтмл в прокта...
 Edited files server/users/login.pug, register.pug.
 ---
@@ -13,3 +12,6 @@ Edited files server/users/login.pug, register.pug.
 Edited register funcionality.
 Some bug fixed in left-nav-bav.css.
 ---
+Edited Login functionality.
+---
+DEV_ENV port change to 80

@@ -7,7 +7,7 @@ module.exports = {
     development: {
         rootPath: rootPath,
         db: 'mongodb://localhost:27017/codeNameSite',
-        port: 1338
+        port: 80
     },
     production: {
         rootPath: rootPath,
