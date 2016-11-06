@@ -1,13 +1,19 @@
 extends ../shared/layout
 block main-content
-    h1 Log In
-    form(method="post" action="/users/authenticate")
-        label(for="username") Username
-        br
-        input(type="text" name="username" id="username")
-        br
-        label(for="password") Password
-        br
-        input(type="password" name="password" id="password")
-        br
-        input(type="submit" value="Log In")
+    main
+        .container
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Login
+                    form.form-login-my
+                        .form-group
+                            label.label-login-my(for='email') Email address:
+                            input#email.form-control(type='email')
+                        .form-group
+                            label.label-login-my(for='pwd') Password:
+                            input#pwd.form-control(type='password')
+                        .checkbox
+                            label.label-login-my
+                                input(type='checkbox')
+                                |  Remember me
+                        button.btn.btn-default(type='submit') Login

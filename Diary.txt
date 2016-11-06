@@ -1,11 +1,10 @@
 Commit 17 was the last commit of tuttorial material. From now on, all commit are from me.
 Creathed check function to check if username already exist..
 --
-<<<<<<< HEAD
 Сега ще опитам да вкарам моя статичен хтмл в прокта...
 Added Top and left nav-bars.
 Added Css and JS files.
 ---
 =======
 Сега ще опитам да вкарам моя статичен хтмл в прокта...
->>>>>>> 4e05c9fb063a4905b21213aff95d114395d1cda1
+Edited files server/users/login.pug, register.pug.

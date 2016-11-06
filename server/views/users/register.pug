@@ -1,25 +1,25 @@
 extends ../shared/layout
 block main-content
-    h1 Create new user
-    form(method="post" action="/users/create")
-        label(for="username") Username
-        br
-        input(type="text" name="username" id="username" value=username)
-        br
-        label(for="password") Password
-        br
-        input(type="password" name="password" id="password")
-        br
-        label(for="confirm-password") Confirm Password
-        br
-        input(type="password" name="confirmPassword" id="confirm-password")
-        br
-        label(for="first-name") First Name
-        br
-        input(type="text" name="firstName" id="first-name")
-        br
-        label(for="last-name") Last Name
-        br
-        input(type="text" name="lastName" id="last-name")
-        br
-        input(type="submit" value="Create")
+    main
+        .container
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Registration
+                    form.form-login-my(method='post', action='/')
+                        .form-group
+                            label.label-login-my(for='firstName') First name:
+                            input#firstName.form-control(type='text')
+                        .form-group
+                            label.label-login-my(for='secondName') Second name
+                            input#secondName.form-control(type='text')
+                        .form-group
+                            label.label-login-my(for='email') Email address:
+                            input#email.form-control(type='email')
+                        .form-group
+                            label.label-login-my(for='pwd') Password:
+                            input#pwd.form-control(type='password')
+                        .checkbox
+                            label.label-login-my
+                                input(type='checkbox')
+                                |  Remember me
+                        input(type='submit', value='Create')
