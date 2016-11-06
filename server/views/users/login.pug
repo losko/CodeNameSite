@@ -4,16 +4,12 @@ block main-content
         .container
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Login
-                    form.form-login-my
+                    h1.text-center Log In
+                    form(class="form-login-my" method="post" action="/users/authenticate")
                         .form-group
-                            label.label-login-my(for='email') Email address:
-                            input#email.form-control(type='email')
+                            label(for="username" class="label-login-my") Username
+                            input(type="text" name="username" id="username" class="form-control")
                         .form-group
-                            label.label-login-my(for='pwd') Password:
-                            input#pwd.form-control(type='password')
-                        .checkbox
-                            label.label-login-my
-                                input(type='checkbox')
-                                |  Remember me
+                            label(for="password" class="label-login-my") Password
+                            input(type="password" name="password" id="password" class="form-control")
                         button.btn.btn-default(type='submit') Login

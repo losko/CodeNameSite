@@ -11,4 +11,5 @@ Edited files server/users/login.pug, register.pug.
 ---
 Сега трябва да накрам апп-а да взема входа от новия хтмл ....
 Edited register funcionality.
-Some bug fixed in left-nav-bav.css
+Some bug fixed in left-nav-bav.css.
+---

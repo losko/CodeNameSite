@@ -5,6 +5,8 @@ block main-content
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Registration
+                    if (globalError)
+                        h3= globalError
                     form.form-login-my(method="post" action="/users/create")
                         label.label-login-my(for="username") Username
                         br
