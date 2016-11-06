@@ -10,5 +10,13 @@ html
                     a(href="/") Home
                 li
                     a(href="/about") About
-
+                li.delimiter
+                if(currentUser)
+                    span= currentUser.username
+                else
+                    li
+                        a(href="/users/register") Register
+                    li
+            if (globalError)
+                h3= globalError
             block main-content
