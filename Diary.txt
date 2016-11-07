@@ -14,4 +14,7 @@ Some bug fixed in left-nav-bav.css.
 ---
 Edited Login functionality.
 ---
-DEV_ENV port change to 80
+DEV_ENV port change to 80.
+Added file server/views/users/createContent.pug with form for upload new content.
+Added file server/controllers/createContent-controller.js and setup rout for this the page.
+---

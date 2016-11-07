@@ -5,6 +5,8 @@ block main-content
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Log In
+                    if (globalError)
+                        h3= globalError
                     form(class="form-login-my" method="post" action="/users/authenticate")
                         .form-group
                             label(for="username" class="label-login-my") Username

@@ -14,6 +14,8 @@ module.exports = (app) => {
 
     app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
 
+    app.get('/users/createContent', controllers.createContent.create)
+
     app.all('*', (req, res) => {
         res.status(404)
         res.send('Not Found')

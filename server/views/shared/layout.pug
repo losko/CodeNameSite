@@ -24,6 +24,10 @@ nav.navbar.navbar-inverse
         if(currentUser)
             ul.nav.navbar-nav.navbar-right
                 li
+                    a(href="/users/createContent")
+                        span(class="glyphicon ") Add Content
+                li
+                li
                     a(href="/users/register")
                         span(class="glyphicon glyphicon-user user-my")= currentUser.username
                 li

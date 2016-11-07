@@ -26,13 +26,12 @@ module.exports = {
                     User
                         .create(user)
                         .then(user => {
-                            "use strict";
-                            req.logIn(user, (err, user) => {
+                            req
+                                .logIn(user, (err) => {
                                 if (err) {
                                     res.render('users/register', { globalError: 'Ooops 500' })
                                     return
                                 }
-
                                 res.redirect('/')
                             })
                         })
@@ -46,7 +45,6 @@ module.exports = {
 
     },
     login: (req, res) => {
-        "use strict";
         res.render('users/login')
     },
     authenticate: (req, res) => {

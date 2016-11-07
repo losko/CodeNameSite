@@ -3,23 +3,23 @@ const LocalPassport = require('passport-local')
 const User = require('mongoose').model('User')
 
 module.exports = () => {
-    "use strict";
     passport.use(new LocalPassport({
         usernameField: 'username',
-        firstNameField: 'firstName',
-        lastNameField: 'lastName',
-        passwordField: 'password',
-        emailField: 'email'
+        passwordField: 'password'
         },
-        (username, password, done) => {
-        User
-            .findOne({ username: username})
-            .then(user => {
-                if (!user) return done(null, false)
-                if (!user.authenticate(password)) return done(null, false)
+        function(username, password, done) {
+            User.findOne({ username: username }, function(err, user) {
+                if (err) { return done(err) }
+                if (!user) {
+                    return done(null, false, { message: 'Incorrect username.' })
+                }
+                if (!user.authenticate(password)) {
+                    return done(null, false, { message: 'Incorrect password.' })
+                }
                 return done(null, user)
             })
-    }))
+        }
+    ))
 
     passport.serializeUser((user, done) => {
         if (user) return done(null, user._id)
@@ -31,5 +31,4 @@ module.exports = () => {
             return done(null, user)
         })
     })
-
 }
