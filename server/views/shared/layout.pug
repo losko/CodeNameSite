@@ -7,6 +7,7 @@ head
     link(rel='stylesheet', href='/css/left-nav-bar.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    //script(src='/js/helper.js')
     //script.var url = window.location.href
         var lastSegment = url.split('/').pop()//
 
@@ -25,11 +26,11 @@ nav.navbar.navbar-inverse
             ul.nav.navbar-nav.navbar-right
                 li
                     a(href="/users/createContent")
-                        span(class="glyphicon ") Add Content
+                        span Add Content
                 li
                 li
                     a(href="/users/register")
-                        span(class="glyphicon glyphicon-user user-my")= currentUser.username
+                        span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
                 li
                     form#logout-form(method="post" action="/users/logout")
                     a(href="javascript:document.getElementById('logout-form').submit()") LogOut
@@ -84,3 +85,4 @@ nav.navbar.navbar-inverse
                     button.btn.btn-info.btn-sm(type='button')
                         i.glyphicon.glyphicon-search
 block main-content
+

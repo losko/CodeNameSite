@@ -18,3 +18,6 @@ DEV_ENV port change to 80.
 Added file server/views/users/createContent.pug with form for upload new content.
 Added file server/controllers/createContent-controller.js and setup rout for this the page.
 ---
+Fixed css classes in register page and color for labels in left-nav-br.css.
+Added file server/views/shared/footer.pug.
+---

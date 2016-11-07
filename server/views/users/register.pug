@@ -8,28 +8,23 @@ block main-content
                     if (globalError)
                         h3= globalError
                     form.form-login-my(method="post" action="/users/create")
-                        label.label-login-my(for="username") Username
-                        br
-                        input.label-login-my(type="text" name="username" id="username" value=username)
-                        br
-                        label.label-login-my(for="password") Password
-                        br
-                        input.label-login-my(type="password" name="password" id="password")
-                        br
-                        label.label-login-my(for="confirm-password") Confirm Password
-                        br
-                        input.label-login-my(type="password" name="confirmPassword" id="confirm-password")
-                        br
-                        label.label-login-my(for="first-name") First Name
-                        br
-                        input.label-login-my(type="text" name="firstName" id="first-name")
-                        br
-                        label.label-login-my(for="last-name") Last Name
-                        br
-                        input.label-login-my(type="text" name="lastName" id="last-name")
-                        br
-                        label.label-login-my(for="email") Email
-                        br
-                        input.label-login-my(type="email" name="email" id="email")
-                        br
-                        input.label-login-my(type="submit" value="Create")
+                        .form-group
+                            label.label-login-my(for="username" class="label-login-my") Username
+                            input.label-login-my(type="text" name="username" id="username" value=username class="form-control")
+                        .form-group
+                            label.label-login-my(for="password" class="label-login-my") Password
+                            input.label-login-my(type="password" name="password" id="password" class="form-control")
+                        .form-group
+                            label.label-login-my(for="confirm-password" class="label-login-my") Confirm Password
+                            input.label-login-my(type="password" name="confirmPassword" id="confirm-password" class="form-control")
+                        .form-group
+                            label.label-login-my(for="first-name" class="label-login-my") First Name
+                            input.label-login-my(type="text" name="firstName" id="first-name" class="form-control")
+                        .form-group
+                            label.label-login-my(for="last-name" class="label-login-my") Last Name
+                            input.label-login-my(type="text" name="lastName" id="last-name" class="form-control")
+                        .form-group
+                            label.label-login-my(for="email" class="label-login-my") Email
+                            input.label-login-my(type="email" name="email" id="email" class="form-control")
+                        button.btn.btn-default(type='submit') Register
+    include ../shared/footer
