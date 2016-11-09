@@ -1,6 +1,10 @@
 module.exports = {
-    create: (req, res) => {
+    graphics: (req, res) => {
         "use strict";
-        res.render('users/createContent')
+        res.render('users/graphics')
+    },
+    literature: (req, res) => {
+        "use strict";
+        res.render('users/literature')
     }
 }

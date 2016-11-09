@@ -4,23 +4,18 @@ block main-content
         .container
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Create New Post
+                    h1.text-center Graphics
                     form.form-login-my
                         .form-group
                             label.label-login-my(for='category') Category
                             select(id="category" class="form-control")
-                                option Graphics
-                                option Music
-                                option Literature
+                                option Photography
+                                option Drawing
+                                option 3D Models
+                                option Other
                         .form-group
-                            label.label-login-my(for='sub-category') Sub Category
-                            select#sub-category.form-control
-                                option 1
-                                option 2
-                                option 3
-                        .form-group
-                            label.label-login-my(for='secondName') Name
-                            input#secondName.form-control(type='text')
+                            label.label-login-my(for='articleName') Name
+                            input#articleName.form-control(type='text')
                         .form-group
                             label.label-login-my(for='description') Description
                             input#description.form-control(type='text')

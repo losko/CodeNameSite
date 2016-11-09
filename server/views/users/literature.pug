@@ -1,0 +1,26 @@
+extends ../shared/layout
+block main-content
+    main
+        .container
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Literature
+                    form.form-login-my
+                        .form-group
+                            label.label-login-my(for='category') Category
+                            select(id="category" class="form-control")
+                                option Poetry
+                                option Poems
+                                option Novels
+                                option Other
+                        .form-group
+                            label.label-login-my(for='articleName') Name
+                            input#articleName.form-control(type='text')
+                        .form-group
+                            label.label-login-my(for='description') Description
+                            input#description.form-control(type='text')
+                        .form-group
+                            label(for="input-file" class="label-login-my") Content
+                            textarea(type='text' id="input-file" class="form-control")
+                        button.btn.btn-default(type='submit') Submit
+    include ../shared/footer

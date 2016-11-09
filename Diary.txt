@@ -21,3 +21,6 @@ Added file server/controllers/createContent-controller.js and setup rout for thi
 Fixed css classes in register page and color for labels in left-nav-br.css.
 Added file server/views/shared/footer.pug.
 ---
+Added different form for upload different content.
+Edited createContend, renamed to graphics.pug.
+Added literature.pug.

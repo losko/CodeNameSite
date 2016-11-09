@@ -7,7 +7,7 @@ head
     link(rel='stylesheet', href='/css/left-nav-bar.css')
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-    //script(src='/js/helper.js')
+    script(src='/js/helper.js')
     //script.var url = window.location.href
         var lastSegment = url.split('/').pop()//
 
@@ -19,14 +19,17 @@ nav.navbar.navbar-inverse
         ul.nav.navbar-nav
             li.active
                 a(href='/') Home
-            li.dropdown
             li
                 a(href='#') Page 2
         if(currentUser)
             ul.nav.navbar-nav.navbar-right
                 li
-                    a(href="/users/createContent")
-                        span Add Content
+                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
+                        ul.dropdown-menu
+                            li
+                                a(href='/users/graphics') Graphics
+                            li
+                                a(href='/users/literature') Literature
                 li
                 li
                     a(href="/users/register")
