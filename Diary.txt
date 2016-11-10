@@ -24,3 +24,6 @@ Added file server/views/shared/footer.pug.
 Added different form for upload different content.
 Edited createContend, renamed to graphics.pug.
 Added literature.pug.
+---
+Added file server/data/Literature.js.
+Fixed problem with login of unexisting user.

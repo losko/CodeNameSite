@@ -4,7 +4,7 @@ let articlesController = require('./articles-controller')
 let createContentController = require('./createContent-controller')
 
 module.exports = {
-    home:homeController,
+    home: homeController,
     users: usersController,
     articles: articlesController,
     createContent: createContentController

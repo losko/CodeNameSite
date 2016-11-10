@@ -14,8 +14,8 @@ module.exports = (app) => {
 
     app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
 
-    app.get('/users/graphics', controllers.createContent.graphics)
-    app.get('/users/literature', controllers.createContent.literature)
+    app.get('/users/graphics',auth.isAuthenticated, controllers.createContent.graphics)
+    app.get('/users/literature',auth.isAuthenticated, controllers.createContent.literature)
 
     app.all('*', (req, res) => {
         res.status(404)
