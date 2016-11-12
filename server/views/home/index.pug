@@ -3,5 +3,12 @@ block main-content
     .container
         .row
             h2 Index Content
-            p Some Content
+                each item in literatures
+                    .col-md-6
+                        header
+                            h2=item.name
+                        p=item.content
+                        p=item.description
+                        small=item.author.username
+
     include ../shared/footer

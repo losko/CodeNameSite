@@ -31,3 +31,4 @@ Fixed problem with login of unexisting user.
 Added file server/data/Literature.js
 Added functionaliti for create Literature content.
 ---
+Added basic functionality for displaying content.
