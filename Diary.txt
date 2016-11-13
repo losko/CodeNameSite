@@ -32,3 +32,8 @@ Added file server/data/Literature.js
 Added functionaliti for create Literature content.
 ---
 Added basic functionality for displaying content.
+Adde folder server/views/literature. 
+File renamed nad moved in server/views/literature/create.pug.
+Added folder server/views/graphics.
+File renamed nad moved in server/views/graphics/create.pug.
+---

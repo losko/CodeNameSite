@@ -3,12 +3,12 @@ const Literature = require('mongoose').model('Literature')
 module.exports = {
     graphics: (req, res) => {
         "use strict";
-        res.render('users/graphics')
+        res.render('graphics/create')
     },
 
     literature: (req, res) => {
         "use strict";
-        res.render('users/literature')
+        res.render('literature/create')
     },
 
     createLiterature: (req, res) => {
@@ -28,7 +28,7 @@ module.exports = {
         }
 
         if (errorMsg) {
-            res.render('users/literature', { error: errorMsg })
+            res.render('literature/create', { error: errorMsg })
             return
         }
 

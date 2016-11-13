@@ -23,6 +23,7 @@
 .navbar-fixed-left {
     width: 160px;
     position: fixed;
+    margin-top: 3.4%;
     border-radius: 0;
     height: 100%;
 }
@@ -73,4 +74,20 @@
 }
 .log-out-my {
     margin-left: 6px;
+}
+.conteiner-my {
+    padding-top: 6%;
+}
+.index-display {
+    width : 300px;
+    height: 200px;
+    padding: 5px;
+    border: solid;
+    border-color: #00ff8c;
+    border-radius: 10px;
+    word-wrap:  break-word;
+    overflow:hidden;
+}
+.inside-conteiner {
+    margin: 5px;
 }

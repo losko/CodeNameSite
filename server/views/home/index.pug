@@ -1,14 +1,16 @@
 extends ../shared/layout
 block main-content
-    .container
+    .container.conteiner-my
+        h2 Index Content
         .row
-            h2 Index Content
-                each item in literatures
-                    .col-md-6
-                        header
-                            h2=item.name
-                        p=item.content
-                        p=item.description
+        each item in literatures
+            .col-sm-4
+                a
+                    .index-display
+
+                        .inside-conteiner
+                            p=item.content
+                    a
                         small=item.author.username
 
     include ../shared/footer

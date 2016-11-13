@@ -14,10 +14,10 @@ module.exports = (app) => {
 
     app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
 
-    app.get('/users/graphics',auth.isAuthenticated, controllers.createContent.graphics)
+    app.get('/graphics/create',auth.isAuthenticated, controllers.createContent.graphics)
 
-    app.get('/users/literature',auth.isAuthenticated, controllers.createContent.literature)
-    app.post('/users/literature',auth.isAuthenticated, controllers.createContent.createLiterature)
+    app.get('/literature/create',auth.isAuthenticated, controllers.createContent.literature)
+    app.post('/literature/create',auth.isAuthenticated, controllers.createContent.createLiterature)
 
     app.all('*', (req, res) => {
         res.status(404)

@@ -12,7 +12,7 @@ head
         var lastSegment = url.split('/').pop()//
 
         //top-navbar//
-nav.navbar.navbar-inverse
+nav.navbar.navbar-inverse.navbar-fixed-top
     .container-fluid
         .navbar-header
             a.navbar-brand(href='/') Cod-Name-Site
@@ -27,9 +27,9 @@ nav.navbar.navbar-inverse
                     a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
                         ul.dropdown-menu
                             li
-                                a(href='/users/graphics') Graphics
+                                a(href='/graphics/create') Graphics
                             li
-                                a(href='/users/literature') Literature
+                                a(href='/literature/create') Literature
                 li
                 li
                     a(href="/users/register")

@@ -1,11 +1,11 @@
 extends ../shared/layout
 block main-content
     main
-        .container
+        .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Literature
-                    form(class="form-login-my" method="POST" action="/users/literature")
+                    form(class="form-login-my" method="POST" action="/literature/create")
                         .form-group
                             label.label-login-my(for='category') Category
                             select(id="category" class="form-control" name="category")
