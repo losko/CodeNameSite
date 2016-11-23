@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 let literatureSchema = mongoose.Schema({
-    category: { type: String, required: true}, //Тук искам да вкарам стойноста от селекта
+    category: { type: String, required: true},
     name: { type: String, required: true },
     description: { type: String },
     content: { type: String, required: true },

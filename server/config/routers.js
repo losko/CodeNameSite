@@ -14,12 +14,12 @@ module.exports = (app) => {
 
     app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
 
-    app.get('/graphics/create',auth.isAuthenticated, controllers.createContent.graphics)
+    /*app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphics)*/
 
-    app.get('/literature/create',auth.isAuthenticated, controllers.createContent.literature)
-    app.post('/literature/create',auth.isAuthenticated, controllers.createContent.createLiterature)
+    app.get('/literature/create',auth.isAuthenticated, controllers.literatures.literatureGet)
+    app.post('/literature/create',auth.isAuthenticated, controllers.literatures.createLiterature)
 
-    app.get('/literature/details/:id', controllers.createContent.literatureDetails)
+    app.get('/literature/details/:id', controllers.literatures.literatureDetails)
 
     app.all('*', (req, res) => {
         res.status(404)

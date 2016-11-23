@@ -1,22 +1,9 @@
 const Literature = require('mongoose').model('Literature')
 
 module.exports = {
-    graphics: (req, res) => {
-        "use strict";
-        res.render('graphics/create')
-    },
-
-    literature: (req, res) => {
+    literatureGet: (req, res) => {
         "use strict";
         res.render('literature/create')
-    },
-    literatureDetails: (req, res) => {
-        "use strict";
-        let id = req.params.id;
-
-        Literature.findById(id).populate('author').then(literature => {
-            res.render('literature/details', literature)
-        })
     },
 
     createLiterature: (req, res) => {
@@ -53,5 +40,14 @@ module.exports = {
                     }
                 })
             })
-    }
+    },
+
+    literatureDetails: (req, res) => {
+        "use strict";
+        let id = req.params.id;
+
+        Literature.findById(id).populate('author').then(literature => {
+            res.render('literature/details', literature)
+        })
+    },
 }

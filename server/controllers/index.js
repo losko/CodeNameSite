@@ -1,11 +1,13 @@
 let homeController = require('./home-controller')
 let usersController = require('./users-controller')
 let articlesController = require('./articles-controller')
-let createContentController = require('./createContent-controller')
+let literatureController = require('./literatures-controller')
+let graphicController = require('./graphics-controller')
 
 module.exports = {
     home: homeController,
     users: usersController,
     articles: articlesController,
-    createContent: createContentController
+    literatures: literatureController,
+    graphics: graphicController,
 }

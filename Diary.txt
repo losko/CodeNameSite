@@ -40,3 +40,7 @@ File renamed nad moved in server/views/graphics/create.pug.
 Remove limit for display content.
 Filed added server/view/literature/details.pug.
 Addet routes for details.
+---
+Added files server/controller/literatures.js, graphicss.js.
+Deleted file createContent-controller.
+Fixed routers.
