@@ -10,6 +10,14 @@ module.exports = {
         "use strict";
         res.render('literature/create')
     },
+    literatureDetails: (req, res) => {
+        "use strict";
+        let id = req.params.id;
+
+        Literature.findById(id).populate('author').then(literature => {
+            res.render('literature/details', literature)
+        })
+    },
 
     createLiterature: (req, res) => {
         "use strict";

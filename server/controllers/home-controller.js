@@ -4,7 +4,7 @@ const Literature = mongoose.model('Literature')
 module.exports = {
     index: (req, res) => {
         "use strict";
-        Literature.find({}).limit(6).populate('author')
+        Literature.find({}).populate('author')
             .then(literatures => {
                 res.render('home/index', {literatures: literatures})
             })

@@ -19,6 +19,8 @@ module.exports = (app) => {
     app.get('/literature/create',auth.isAuthenticated, controllers.createContent.literature)
     app.post('/literature/create',auth.isAuthenticated, controllers.createContent.createLiterature)
 
+    app.get('/literature/details/:id', controllers.createContent.literatureDetails)
+
     app.all('*', (req, res) => {
         res.status(404)
         res.send('Not Found')
