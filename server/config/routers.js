@@ -21,6 +21,11 @@ module.exports = (app) => {
 
     app.get('/literature/details/:id', controllers.literatures.literatureDetails)
 
+    app.get('/literature/edit/:id',auth.isAuthenticated, controllers.literatures.editGet)
+    app.post('/literature/edit/:id',auth.isAuthenticated, controllers.literatures.editPost)
+
+
+
     app.all('*', (req, res) => {
         res.status(404)
         res.send('Not Found')

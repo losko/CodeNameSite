@@ -48,6 +48,39 @@ module.exports = {
 
         Literature.findById(id).populate('author').then(literature => {
             res.render('literature/details', literature)
+
+        })
+
+    },
+
+    editGet: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        Literature.findById(id).then(literature => {
+            res.render('literature/edit', literature)
         })
     },
+
+    editPost: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        let literatureArgs = req.body
+        let errorMsg = ''
+        if (!literatureArgs.name) {
+            errorMsg = 'Literature name cannot be empty'
+        } else if (!literatureArgs.content) {
+            errorMsg = 'Literature content cannot be empty'
+        }
+
+        if (errorMsg) {
+            res.render('literature/edit', {error: errorMsg})
+        } else {
+            Literature.update({_id: id}, {$set: {name: literatureArgs.name, content: literatureArgs.content, category: literatureArgs.category, description: literatureArgs.description}})
+                .then(updateStatus => {
+                    res.redirect(`/literature/details/${id}`)
+                })
+        }
+    }
 }

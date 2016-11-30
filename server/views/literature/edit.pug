@@ -1,0 +1,42 @@
+extends ../shared/layout
+block main-content
+    main
+        .container.conteiner-my
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Edit Literature
+                    form(class="form-login-my" method="POST" action="/literature/edit/" + id)
+                        .form-group
+                            label.label-login-my(for='category') Category
+                            select(id="category" class="form-control" name="category" )
+                                if(category === "Poetry")
+                                    option(selected="selected") Poetry
+                                    option Poems
+                                    option Novels
+                                    option Other
+                                if(category === "Poems")
+                                    option Poetry
+                                    option(selected="selected") Poems
+                                    option Novels
+                                    option Other
+                                if(category === "Novels")
+                                    option Poetry
+                                    option Poems
+                                    option(selected="selected") Novels
+                                    option Other
+                                if(category === "Other")
+                                    option Poetry
+                                    option Poems
+                                    option Novels
+                                    option(selected="selected") Other
+                        .form-group
+                            label.label-login-my(for='literatureName') Name
+                            input#literatureName.form-control(type='text' name="name" value=""+name)
+                        .form-group
+                            label.label-login-my(for='description') Description
+                            input#description.form-control(type='text' name="description" value=""+description)
+                        .form-group
+                            label(for="input-file" class="label-login-my") Content
+                            textarea(type='text' id="input-file" class="form-control" name="content")=content
+                        button.btn.btn-default(type='submit') Submit
+    include ../shared/footer
