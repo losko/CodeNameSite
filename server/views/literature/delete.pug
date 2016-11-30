@@ -4,11 +4,11 @@ block main-content
         .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Edit Literature
-                    form(class="form-login-my" method="POST" action="/literature/edit/"+id)
+                    h1.text-center Delete Literature
+                    form(class="form-login-my" method="POST" action="/literature/delete/"+id)
                         .form-group
                             label.label-login-my(for='category') Category
-                            select(id="category" class="form-control" name="category" )
+                            select(id="category" class="form-control" name="category" disabled )
                                 if(category === "Poetry")
                                     option(selected="selected") Poetry
                                     option Poems
@@ -31,14 +31,13 @@ block main-content
                                     option(selected="selected") Other
                         .form-group
                             label.label-login-my(for='literatureName') Name
-                            input#literatureName.form-control(type='text' name="name" value=""+name)
+                            input#literatureName.form-control(type='text' name="name" value=""+name disabled)
                         .form-group
                             label.label-login-my(for='description') Description
-                            input#description.form-control(type='text' name="description" value=""+description)
+                            input#description.form-control(type='text' name="description" value=""+description disabled)
                         .form-group
                             label(for="input-file" class="label-login-my") Content
-                            textarea(type='text' id="input-file" class="form-control" name="content")=content
+                            textarea(type='text' id="input-file" class="form-control" name="content" disabled)=content
                         a(href='/literature/details/' +id).btn.btn-default Cancel
-                        button.btn.btn-default(type='submit') Edit
-
+                        button.btn.btn-default(type='submit') Delete
     include ../shared/footer

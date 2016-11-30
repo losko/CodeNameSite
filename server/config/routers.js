@@ -12,17 +12,20 @@ module.exports = (app) => {
     app.post('/users/authenticate', controllers.users.authenticate)
     app.post('/users/logout', controllers.users.logout)
 
-    app.get('/articles/create',auth.isAuthenticated, controllers.articles.create)
+    app.get('/articles/create', auth.isAuthenticated, controllers.articles.create)
 
     /*app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphics)*/
 
-    app.get('/literature/create',auth.isAuthenticated, controllers.literatures.literatureGet)
-    app.post('/literature/create',auth.isAuthenticated, controllers.literatures.createLiterature)
+    app.get('/literature/create', auth.isAuthenticated, controllers.literatures.literatureGet)
+    app.post('/literature/create', auth.isAuthenticated, controllers.literatures.createLiterature)
 
     app.get('/literature/details/:id', controllers.literatures.literatureDetails)
 
-    app.get('/literature/edit/:id',auth.isAuthenticated, controllers.literatures.editGet)
-    app.post('/literature/edit/:id',auth.isAuthenticated, controllers.literatures.editPost)
+    app.get('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editGet)
+    app.post('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editPost)
+
+    app.get('/literature/delete/:id', auth.isAuthenticated, controllers.literatures.deleteGet)
+    app.post('/literature/delete/:id', auth.isAuthenticated, controllers.literatures.deletePost)
 
 
 

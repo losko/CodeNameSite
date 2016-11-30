@@ -23,7 +23,7 @@ module.exports = {
         }
 
         if (errorMsg) {
-            res.render('literature/create', { error: errorMsg })
+            res.render('literature/create', {error: errorMsg})
             return
         }
 
@@ -34,7 +34,7 @@ module.exports = {
                 req.user.literature.push(literature.id)
                 req.user.save(err => {
                     if (err) {
-                        res.redirect('/', { error: err.message })
+                        res.redirect('/', {error: err.message})
                     } else {
                         res.redirect('/')
                     }
@@ -77,10 +77,48 @@ module.exports = {
         if (errorMsg) {
             res.render('literature/edit', {error: errorMsg})
         } else {
-            Literature.update({_id: id}, {$set: {name: literatureArgs.name, content: literatureArgs.content, category: literatureArgs.category, description: literatureArgs.description}})
+            Literature.update({_id: id}, {
+                $set: {
+                    name: literatureArgs.name,
+                    content: literatureArgs.content,
+                    category: literatureArgs.category,
+                    description: literatureArgs.description
+                }
+            })
                 .then(updateStatus => {
                     res.redirect(`/literature/details/${id}`)
                 })
         }
+    },
+
+    deleteGet: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        Literature.findById(id).then(literature => {
+            res.render('literature/delete', literature)
+        })
+    },
+
+    deletePost: (req, res) => {
+        "use strict";
+        let id = req.params.id
+        Literature.findOneAndRemove({_id: id}).populate('author').then(literature => {
+            let author = literature.author
+
+            let index = author.literature.indexOf(literature.id)
+
+            if (index < 0) {
+                let errorMsg = 'Literature was not found for that author'
+                res.render('literature/delete', {error: errorMsg})
+            } else {
+                let count = 1
+                author.literature.splice(index, count);
+                author.save().then((user) => {
+                    res.redirect('/')
+                })
+            }
+        })
     }
+
 }
