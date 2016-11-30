@@ -1,5 +1,6 @@
 const controllers = require('../controllers')
 const auth = require('../config/auth')
+const adminController = require('../controllers/admin/admin-controller')
 
 module.exports = (app) => {
     "use strict";
@@ -28,6 +29,7 @@ module.exports = (app) => {
     app.post('/literature/delete/:id', auth.isAuthenticated, controllers.literatures.deletePost)
 
 
+    app.get('/admin/user/all', auth.isInRole('Admin'), adminController.user.all)
 
     app.all('*', (req, res) => {
         res.status(404)

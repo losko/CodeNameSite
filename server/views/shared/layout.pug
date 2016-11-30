@@ -22,22 +22,49 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             li
                 a(href='#') Page 2
         if(currentUser)
-            ul.nav.navbar-nav.navbar-right
-                li
-                    a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
-                        ul.dropdown-menu
-                            li
-                                a(href='/graphics/create') Graphics
-                            li
-                                a(href='/literature/create') Literature
-                li
-                li
-                    a(href="/users/register")
-                        span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
-                li
-                    form#logout-form(method="post" action="/users/logout")
-                    a(href="javascript:document.getElementById('logout-form').submit()") LogOut
-                        span(class="glyphicon glyphicon-log-out log-out-my")
+                if(currentUser.username === "Admin")
+                    ul.nav.navbar-nav.navbar-right
+                        li.dropdown
+                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                                | Admin
+                                span.caret
+                            ul.dropdown-menu(role='menu')
+                                li
+                                    a(href='/admin/user/all') Users
+                                li
+                                    a(href='/admin/category/all') Categories
+                        li
+                            a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
+                                ul.dropdown-menu
+                                    li
+                                        a(href='/graphics/create') Graphics
+                                    li
+                                        a(href='/literature/create') Literature
+                        li
+                        li
+                            a(href="/users/register")
+                                span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
+                        li
+                            form#logout-form(method="post" action="/users/logout")
+                            a(href="javascript:document.getElementById('logout-form').submit()") LogOut
+                                span(class="glyphicon glyphicon-log-out log-out-my")
+                else
+                    ul.nav.navbar-nav.navbar-right
+                        li
+                            a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
+                                ul.dropdown-menu
+                                    li
+                                        a(href='/graphics/create') Graphics
+                                    li
+                                        a(href='/literature/create') Literature
+                        li
+                        li
+                            a(href="/users/register")
+                                span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
+                        li
+                            form#logout-form(method="post" action="/users/logout")
+                            a(href="javascript:document.getElementById('logout-form').submit()") LogOut
+                                span(class="glyphicon glyphicon-log-out log-out-my")
         else
             ul.nav.navbar-nav.navbar-right
                 li

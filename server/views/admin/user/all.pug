@@ -1,0 +1,40 @@
+extends ../../shared/layout
+block main-content
+    .container.body-content.conteiner-my
+        .well
+            h2 All Users
+            .row
+                table.table.table-striped.table-hover
+                    thead
+                        tr
+                            th ID
+                            th Username
+                            th First Name
+                            th Last Name
+                            th Email
+                            th Action
+                    tbody
+                        each user in users
+                            if(user.username === 'Admin')
+                                tr(class='info')
+                                    td=user.id
+                                    td=user.username
+                                    td=user.firstName
+                                    td=user.lastName
+                                    td=user.email
+                                    td
+                                        a(class="btn" href='/admin/user/edit/' + id) Edit
+                                        a(class="btn" href='/admin/user/delete/' + id) Delete
+                            else
+                                tr
+                                    td=user.id
+                                    td=user.username
+                                    td=user.firstName
+                                    td=user.lastName
+                                    td=user.email
+                                    td
+                                        a(class="btn" href='/admin/user/edit/' + id) Edit
+                                        a(class="btn" href='/admin/user/delete/' + id) Delete
+
+
+    include ../../shared/footer
