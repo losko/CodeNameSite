@@ -57,3 +57,5 @@ Added functionality for listing all users.
 Added files server/view/literature/poetry.pug, poems.pug, novels.pug, other.pug.
 Added funcionality for displaing literature by categories.
 ---
+Enable admin to edit all posts.
+---

@@ -15,7 +15,7 @@ block main-content
             p=date
 
         if(currentUser)
-            if(currentUser.username === author.username)
+            if(currentUser.username === author.username || currentUser.username === 'Admin')
                 a.btn.btn-success.btn-xs(href='/literature/edit/'+id) Edit »
                 a.btn.btn-danger.btn-xs(href='/literature/delete/'+id) Delete »
         a.btn.btn-default.btn-xs(href='/') Back »
