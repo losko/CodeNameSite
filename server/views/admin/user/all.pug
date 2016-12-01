@@ -23,8 +23,8 @@ block main-content
                                     td=user.lastName
                                     td=user.email
                                     td
-                                        a(class="btn" href='/admin/user/edit/' + id) Edit
-                                        a(class="btn" href='/admin/user/delete/' + id) Delete
+                                        a(class="btn" href='/admin/user/edit/'+user.id) Edit
+                                        a(class="btn" href='/admin/user/delete/'+user.id) Delete
                             else
                                 tr
                                     td=user.id

@@ -5,6 +5,10 @@ const adminController = require('../controllers/admin/admin-controller')
 module.exports = (app) => {
     "use strict";
     app.get('/', controllers.home.index)
+    app.get('/literature/poetry', controllers.literatures.poetryGet)
+    app.get('/literature/poems', controllers.literatures.poemsGet)
+    app.get('/literature/novels', controllers.literatures.novelsGet)
+    app.get('/literature/other', controllers.literatures.otherGet)
     app.get('/about', controllers.home.about)
 
     app.get('/users/register', controllers.users.register)

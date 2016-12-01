@@ -1,0 +1,17 @@
+extends ../shared/layout
+block main-content
+    .container.conteiner-my
+        h1.text-center Poetry
+        .row
+        each item in literatures
+            .col-sm-4
+                a(href="/literature/details/"+item.id)
+                    h2.text-center=item.name
+                    .index-display
+
+                        .inside-conteiner
+                            p=item.content
+                    a(href="#")
+                        small=item.author.username
+
+    include ../shared/footer

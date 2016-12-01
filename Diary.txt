@@ -50,6 +50,10 @@ Added file server/view/literature/edit.png + functionality for int.
 ---
 Added file server/view/literature/delete.png + functionality for int.
 ---
+Replaced server folder with backup.
 Added files server/controllers/admin/admin-controller.js, user-controller.js, server/view/admin/user/all.pug
 Added functionality for listing all users.
+---
+Added files server/view/literature/poetry.pug, poems.pug, novels.pug, other.pug.
+Added funcionality for displaing literature by categories.
 ---

@@ -119,6 +119,35 @@ module.exports = {
                 })
             }
         })
+    },
+
+    poetryGet: (req, res) => {
+        "use strict";
+        Literature.find({category: "Poetry"}).populate('author')
+            .then(poetrys => {
+                res.render('literature/poetry', {literatures: poetrys})
+            })
+    },
+    poemsGet: (req, res) => {
+        "use strict";
+        Literature.find({category: "Poems"}).populate('author')
+            .then(poems => {
+                res.render('literature/poems', {literatures: poems})
+            })
+    },
+    novelsGet: (req, res) => {
+        "use strict";
+        Literature.find({category: "Novels"}).populate('author')
+            .then(novels => {
+                res.render('literature/novels', {literatures: novels})
+            })
+    },
+    otherGet: (req, res) => {
+        "use strict";
+        Literature.find({category: "Other"}).populate('author')
+            .then(others => {
+                res.render('literature/other', {literatures: others})
+            })
     }
 
 }
