@@ -20,4 +20,5 @@ module.exports = (config) => {
 
     require('../data/User').seedAdminUser()
     require('../data/Literature')
+    /*require('../data/Graphic')*/
 }

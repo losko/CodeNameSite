@@ -1,26 +1,26 @@
-extends ../shared/layout
-block main-content
+//extends ../shared/layout
+//block main-content
     main
         .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Graphics
-                    form.form-login-my
+                    form(method="POST" action="/graphics/create" enctype="multipart/form-data").form-login-my
                         .form-group
                             label.label-login-my(for='category') Category
-                            select(id="category" class="form-control")
+                            select(id="category" class="form-control" name="category")
                                 option Photography
                                 option Drawing
                                 option 3D Models
                                 option Other
                         .form-group
                             label.label-login-my(for='articleName') Name
-                            input#articleName.form-control(type='text')
+                            input#articleName.form-control(type='text' name="name")
                         .form-group
                             label.label-login-my(for='description') Description
-                            input#description.form-control(type='text')
+                            input#description.form-control(type='text' name="description")
                         .form-group
                             label(for="input-file" class="label-login-my") Chose file
-                            input(type='file' id="input-file" class="form-control")
+                            input(type='file' id="input-file" class="form-control" name="file")
                         button.btn.btn-default(type='submit') Submit
     include ../shared/footer

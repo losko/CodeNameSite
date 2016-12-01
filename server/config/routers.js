@@ -19,7 +19,8 @@ module.exports = (app) => {
 
     app.get('/articles/create', auth.isAuthenticated, controllers.articles.create)
 
-    /*app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphics)*/
+    /*app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphicsGet)
+    app.post('/graphics/create',auth.isAuthenticated, controllers.graphics.createGraphics)*/
 
     app.get('/literature/create', auth.isAuthenticated, controllers.literatures.literatureGet)
     app.post('/literature/create', auth.isAuthenticated, controllers.literatures.createLiterature)

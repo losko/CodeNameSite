@@ -1,8 +1,15 @@
-/*const Graphic = require('mongoose').model('Graphic')
+/*
+const Graphic = require('mongoose').model('Graphic')
+
 
 module.exports = {
-    graphics: (req, res) => {
+    graphicsGet: (req, res) => {
         "use strict";
         res.render('graphics/create')
     },
-}*/
+    createGraphics: (req, res) => {
+        "use strict";
+
+    }
+}
+*/
