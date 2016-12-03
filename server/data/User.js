@@ -9,6 +9,7 @@ let userSchema = mongoose.Schema({
     lastName: { type: String, required: requiredValidationMessage},
     email: { type: String, required: requiredValidationMessage},
     literature: {type: [mongoose.Schema.Types.ObjectId], default: []},
+    comments: {type: [mongoose.Schema.Types.ObjectId], default: []},
     salt: String,
     hashedPass: String,
     roles: [String]

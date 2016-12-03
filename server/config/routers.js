@@ -27,6 +27,8 @@ module.exports = (app) => {
 
     app.get('/literature/details/:id', controllers.literatures.literatureDetails)
 
+    app.post('/literature/comments', auth.isAuthenticated, controllers.comment.commentPost)
+
     app.get('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editGet)
     app.post('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editPost)
 

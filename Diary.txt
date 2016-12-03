@@ -59,3 +59,10 @@ Added funcionality for displaing literature by categories.
 ---
 Enable admin to edit all posts.
 ---
+Commented all funcionality for Graphics.
+---
+Added file server/data/Comments.js.
+Added File server/views/literature/comments.pug.
+Added file server/controllers/comments-controller.js.
+Added functionality for adding comments on literaure posts.
+---

@@ -46,11 +46,9 @@ module.exports = {
         "use strict";
         let id = req.params.id;
 
-        Literature.findById(id).populate('author').then(literature => {
+        Literature.findById(id).populate('author comments').then(literature => {
             res.render('literature/details', literature)
-
         })
-
     },
 
     editGet: (req, res) => {
