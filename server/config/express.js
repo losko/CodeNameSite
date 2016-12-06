@@ -8,7 +8,6 @@ module.exports = (config, app) => {
     "use strict";
     app.set('view engine', 'pug')
     app.set('views', config.rootPath + 'server/views')
-
     app.use(cookieParser())
     app.use(bodyParser.urlencoded({ extended: true}))
     app.use(session({ secret: 'neshto-taino!@#$%', resave: true, saveUninitialized: true}))
