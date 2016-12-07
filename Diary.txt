@@ -68,3 +68,7 @@ Added functionality for adding comments on literaure posts.
 ---
 Added functionality for displaying comments author.
 ---
+Added count for how many times some literature are viewed.
+Added file server/views/literature/search.pug.
+Added functionality for search by name.
+---

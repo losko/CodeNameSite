@@ -9,6 +9,9 @@ module.exports = (app) => {
     app.get('/literature/poems', controllers.literatures.poemsGet)
     app.get('/literature/novels', controllers.literatures.novelsGet)
     app.get('/literature/other', controllers.literatures.otherGet)
+
+    app.post('/literature/search', controllers.literatures.searchPost)
+
     app.get('/about', controllers.home.about)
 
     app.get('/users/register', controllers.users.register)

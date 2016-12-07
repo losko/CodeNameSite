@@ -1,11 +1,11 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Poems
+        h1.text-center Search Content
         .row
         each item in literatures
             .col-sm-4
-                a(href="/literature/details/"+item.id)
+                a(href="/literature/details/" + item.id)
                     h2.text-center=item.name
                     .index-display
 
@@ -15,5 +15,5 @@ block main-content
                         small=item.author.username
                     p
                         small=item.views
-    include ../shared/footer
 
+    include ../shared/footer

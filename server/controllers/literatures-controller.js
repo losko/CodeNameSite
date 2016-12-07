@@ -30,6 +30,7 @@ module.exports = {
 
         literatureInput.author = req.user.id
         literatureInput.category = req.body.category.toString()
+        literatureInput.views = 0
         Literature.create(literatureInput)
             .then(literature => {
                 req.user.literature.push(literature.id)
@@ -48,7 +49,9 @@ module.exports = {
         let id = req.params.id;
 
         Literature.findById(id).populate('author').then(literature => {
-            Comment.find({}).populate('author').then(comments => {
+            literature.views ++
+            literature.save()
+            Comment.find({target: id}).populate('author').then(comments => {
                 literature.comments = comments
                 res.render('literature/details', literature)
             })
@@ -150,6 +153,22 @@ module.exports = {
             .then(others => {
                 res.render('literature/other', {literatures: others})
             })
+    },
+    searchPost: (req, res) => {
+        "use strict";
+        let search = req.body
+        if (search.search === '') {
+            Literature.find({}).populate('author')
+                .then(search => {
+                    res.render('literature/search', {literatures: search})
+                })
+        } else {
+            Literature.find({name: search.search}).populate('author')
+                .then(search => {
+                    res.render('literature/search', {literatures: search})
+                })
+        }
+
     }
 
 }

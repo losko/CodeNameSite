@@ -107,10 +107,10 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         a(href='/literature/novels') Novels
                     li.list-group-item
                         a(href='/literature/other') Other
-    form.form-search-leftNav-my
+    form(method='post' action='/literature/search').form-search-leftNav-my
         #custom-search-input
             .input-group.col-md-12
-                input.form-control.input-sm(type='text', placeholder='Search')
+                input.form-control.input-sm(type='text', placeholder='Search by name' name="search")
                 span.input-group-btn
                     button.btn.btn-info.btn-sm(type='submit')
                         i.glyphicon.glyphicon-search
