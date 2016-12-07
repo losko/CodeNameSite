@@ -66,3 +66,5 @@ Added File server/views/literature/comments.pug.
 Added file server/controllers/comments-controller.js.
 Added functionality for adding comments on literaure posts.
 ---
+Added functionality for displaying comments author.
+---

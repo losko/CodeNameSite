@@ -1,4 +1,5 @@
 const Literature = require('mongoose').model('Literature')
+const Comment = require('mongoose').model('Comment')
 
 module.exports = {
     literatureGet: (req, res) => {
@@ -46,8 +47,11 @@ module.exports = {
         "use strict";
         let id = req.params.id;
 
-        Literature.findById(id).populate('author comments').then(literature => {
-            res.render('literature/details', literature)
+        Literature.findById(id).populate('author').then(literature => {
+            Comment.find({}).populate('author').then(comments => {
+                literature.comments = comments
+                res.render('literature/details', literature)
+            })
         })
     },
 
