@@ -72,3 +72,6 @@ Added count for how many times some literature are viewed.
 Added file server/views/literature/search.pug.
 Added functionality for search by name.
 ---
+Fixed funcionality for delete literature with comments.
+Added file server/views/literature/commentEdit.pug.
+Added routes for edit comments in server/config/routers.js

@@ -1,0 +1,15 @@
+block main-content
+    .container
+        h1.text-center Comments
+        .row
+            form(class="form-login-my" method="POST" action="/literature/comments")
+                .form-group
+                    input#literatureName.form-control(type='text' name="target" value=""+id style="Display: none")
+                .form-group
+                    label(for="input-file" class="label-login-my") Comment
+                    textarea(type='text' id="input-file"  name="comment" )
+                button.btn.btn-default(type='submit') Edit
+        if(currentUser)
+            if(currentUser.username === author.username || currentUser.username === 'Admin')
+                a.btn.btn-success.btn-xs(href='/comment/edit/' + id) Edit »
+                a.btn.btn-danger.btn-xs(href='/comment/delete/' + id) Delete »

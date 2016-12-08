@@ -32,6 +32,12 @@ module.exports = (app) => {
 
     app.post('/literature/comments', auth.isAuthenticated, controllers.comment.commentPost)
 
+    app.get('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editGet)
+    app.post('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editPost)
+
+    app.get('/comment/delete/:id', auth.isAuthenticated, controllers.comment.deletePost)
+    app.post('/comment/delete/:id', auth.isAuthenticated, controllers.comment.deletePost)
+
     app.get('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editGet)
     app.post('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editPost)
 

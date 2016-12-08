@@ -15,3 +15,7 @@ block main-content
                 p=comment.comment
                 p=comment.date
                 p -----------------
+                if(currentUser)
+                    if(currentUser.username === author.username || currentUser.username === 'Admin')
+                        a.btn.btn-success.btn-xs(href='/comment/edit/'+id) Edit
+                        a.btn.btn-danger.btn-xs(href='/comment/delete/'+id) Delete

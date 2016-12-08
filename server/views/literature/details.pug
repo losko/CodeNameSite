@@ -13,8 +13,6 @@ block main-content
             p=description
             p=category
             p=date
-
-
         if(currentUser)
             if(currentUser.username === author.username || currentUser.username === 'Admin')
                 a.btn.btn-success.btn-xs(href='/literature/edit/'+id) Edit »

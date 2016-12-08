@@ -109,20 +109,8 @@ module.exports = {
         "use strict";
         let id = req.params.id
         Literature.findOneAndRemove({_id: id}).populate('author').then(literature => {
-            let author = literature.author
-
-            let index = author.literature.indexOf(literature.id)
-
-            if (index < 0) {
-                let errorMsg = 'Literature was not found for that author'
-                res.render('literature/delete', {error: errorMsg})
-            } else {
-                let count = 1
-                author.literature.splice(index, count);
-                author.save().then((user) => {
-                    res.redirect('/')
-                })
-            }
+            literature.prepareDelete()
+            res.redirect('/')
         })
     },
 
@@ -133,6 +121,7 @@ module.exports = {
                 res.render('literature/poetry', {literatures: poetrys})
             })
     },
+
     poemsGet: (req, res) => {
         "use strict";
         Literature.find({category: "Poems"}).populate('author')
@@ -140,6 +129,7 @@ module.exports = {
                 res.render('literature/poems', {literatures: poems})
             })
     },
+
     novelsGet: (req, res) => {
         "use strict";
         Literature.find({category: "Novels"}).populate('author')
@@ -147,6 +137,7 @@ module.exports = {
                 res.render('literature/novels', {literatures: novels})
             })
     },
+
     otherGet: (req, res) => {
         "use strict";
         Literature.find({category: "Other"}).populate('author')
@@ -154,6 +145,7 @@ module.exports = {
                 res.render('literature/other', {literatures: others})
             })
     },
+
     searchPost: (req, res) => {
         "use strict";
         let search = req.body
@@ -168,7 +160,5 @@ module.exports = {
                     res.render('literature/search', {literatures: search})
                 })
         }
-
     }
-
 }

@@ -23,5 +23,28 @@ module.exports = {
                 })
             })
 
+    },
+    editGet: (req, res) => {
+        "use strict";
+        let id = req.params.id
+        Literature.findById(id).populate('author').then(literature => {
+            console.log(literature);
+            Comment.find({target: id}).populate('author').then(comments => {
+                literature.comments = comments
+
+                res.render('literature/details', literature)
+            })
+        })
+    },
+    editPost: (req, res) => {
+        "use strict";
+
+    },deleteGet: (req, res) => {
+        "use strict";
+
+    },
+    deletePost: (req, res) => {
+        "use strict";
+
     }
 }
