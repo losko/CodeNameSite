@@ -22,15 +22,18 @@ module.exports = (app) => {
 
     app.get('/articles/create', auth.isAuthenticated, controllers.articles.create)
 
-    /*app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphicsGet)
-    app.post('/graphics/create',auth.isAuthenticated, controllers.graphics.createGraphics)*/
+    app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphicGet)
+    app.post('/graphics/create',auth.isAuthenticated, controllers.graphics.createGraphic)
+
+    app.get('/graphics/index', controllers.graphics.index)
+    app.get('/graphics/details/:id', controllers.graphics.graphicDetails)
 
     app.get('/literature/create', auth.isAuthenticated, controllers.literatures.literatureGet)
     app.post('/literature/create', auth.isAuthenticated, controllers.literatures.createLiterature)
 
     app.get('/literature/details/:id', controllers.literatures.literatureDetails)
 
-    app.post('/literature/comments', auth.isAuthenticated, controllers.comment.commentPost)
+    app.post('/comments/create', auth.isAuthenticated, controllers.comment.commentPost)
 
     app.get('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editGet)
     app.post('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editPost)

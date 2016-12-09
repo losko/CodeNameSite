@@ -2,7 +2,7 @@ block main-content
     .container
         h1.text-center Comments
         .row
-            form(class="form-login-my" method="POST" action="/literature/comments")
+            form(class="form-login-my" method="POST" action="/comments/create")
                 .form-group
                     input#literatureName.form-control(type='text' name="target" value=""+id style="Display: none")
                 .form-group

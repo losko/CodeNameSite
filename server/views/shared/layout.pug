@@ -1,6 +1,6 @@
 doctype html
 head
-    title Code-Name-Site
+    title Code Name Site
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
@@ -8,14 +8,10 @@ head
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     script(src='/js/helper.js')
-    //script.var url = window.location.href
-        var lastSegment = url.split('/').pop()//
-
-        //top-navbar//
 nav.navbar.navbar-inverse.navbar-fixed-top
     .container-fluid
         .navbar-header
-            a.navbar-brand(href='/') Cod-Name-Site
+            a.navbar-brand(href='/') Code Name Site
         ul.nav.navbar-nav
             li.active
                 a(href='/') Home
@@ -36,7 +32,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         li
                             a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
                                 ul.dropdown-menu
-                                    //li
+                                    li
                                         a(href='/graphics/create') Graphics
                                     li
                                         a(href='/literature/create') Literature
@@ -53,7 +49,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         li
                             a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
                                 ul.dropdown-menu
-                                    //li
+                                    li
                                         a(href='/graphics/create') Graphics
                                     li
                                         a(href='/literature/create') Literature
@@ -77,7 +73,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         |  Login
                 //left-navbar//
 .navbar.navbar-inverse.navbar-fixed-left
-    //.panel-group
+    .panel-group
         .panel.panel-default
             .panel-heading
                 h4.panel-title
@@ -85,7 +81,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
             #collapse1.panel-collapse.collapse
                 ul.list-group
                     li.list-group-item
-                        a(href='photography.html') Photography
+                        a(href='/graphics/index') Photography
                     li.list-group-item
                         a(href='drawing.html') Drawing
                     li.list-group-item

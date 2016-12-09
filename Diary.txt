@@ -75,3 +75,12 @@ Added functionality for search by name.
 Fixed funcionality for delete literature with comments.
 Added file server/views/literature/commentEdit.pug.
 Added routes for edit comments in server/config/routers.js
+---
+Separate comments functionality from literature and make it avalible for both literature and graphic.
+Added file server/controllers/graphics-controller.js.
+Added file server/data/Graphic.js.
+Added file server/views/comments/create.pug.
+Added file server/views/comments/edit.pug.
+Remove file server/views/literature/comments.pug.
+Remove file server/views/literature/commentsEdit.pug.
+---
