@@ -2,7 +2,7 @@ block main-content
     .container
         h1.text-center Comments
         .row
-            form(class="form-login-my" method="POST" action="/comments/create")
+            form(class="form-login-my" method="POST" action="/comments/create" enctype="multipart/form-data")
                 .form-group
                     input#literatureName.form-control(type='text' name="target" value=""+id style="Display: none")
                 .form-group
@@ -14,8 +14,9 @@ block main-content
                 p=comment.author.username
                 p=comment.comment
                 p=comment.date
+                p=comment._id
                 p -----------------
                 if(currentUser)
                     if(currentUser.username === author.username || currentUser.username === 'Admin')
-                        a.btn.btn-success.btn-xs(href='/comment/edit/'+id) Edit
+                        a.btn.btn-success.btn-xs(href='/comment/edit/'+_id) Edit
                         a.btn.btn-danger.btn-xs(href='/comment/delete/'+id) Delete

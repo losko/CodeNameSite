@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const passport = require('passport')
+const multer = require('multer')
 
 module.exports = (config, app) => {
     "use strict";
@@ -11,6 +12,7 @@ module.exports = (config, app) => {
     app.use(cookieParser())
     app.use(bodyParser.urlencoded({ extended: true}))
     app.use(session({ secret: 'neshto-taino!@#$%', resave: true, saveUninitialized: true}))
+    app.use(multer({dest: 'public/uploads'}).any())
     app.use(passport.initialize())
     app.use(passport.session())
     app.use((req, res, next) => {

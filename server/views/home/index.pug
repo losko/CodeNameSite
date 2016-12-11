@@ -3,14 +3,15 @@ block main-content
     .container.conteiner-my
         h1.text-center Index Content
         .row
-        each item in literatures
+        each item in content
             .col-sm-4
-                a(href="/literature/details/"+item.id)
+                a(href="/graphics/details/"+item.id)
                     h2.text-center=item.name
                     .index-display
 
                         .inside-conteiner
-                            p=item.content
+                            image(src=item.image+'.png').image-display
+                            //p=item.content
                     a(href="#")
                         small=item.author.username
                     p

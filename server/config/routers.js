@@ -22,8 +22,8 @@ module.exports = (app) => {
 
     app.get('/articles/create', auth.isAuthenticated, controllers.articles.create)
 
-    app.get('/graphics/create',auth.isAuthenticated, controllers.graphics.graphicGet)
-    app.post('/graphics/create',auth.isAuthenticated, controllers.graphics.createGraphic)
+    app.get('/graphics/create',auth.isAuthenticated,  controllers.graphics.graphicGet)
+    app.post('/graphics/create',auth.isAuthenticated,  controllers.graphics.createGraphic)
 
     app.get('/graphics/index', controllers.graphics.index)
     app.get('/graphics/details/:id', controllers.graphics.graphicDetails)

@@ -84,3 +84,5 @@ Added file server/views/comments/edit.pug.
 Remove file server/views/literature/comments.pug.
 Remove file server/views/literature/commentsEdit.pug.
 ---
+Added functionalyti for uploading and display images
+---

@@ -7,7 +7,7 @@ let userSchema = mongoose.Schema({
     username: { type: String, required: requiredValidationMessage, unique: true},
     firstName: { type: String, required: requiredValidationMessage},
     lastName: { type: String, required: requiredValidationMessage},
-    email: { type: String, required: requiredValidationMessage},
+    email: { type: String, required: requiredValidationMessage, unique: true},
     literature: {type: [mongoose.Schema.Types.ObjectId], default: []},
     graphics: {type: [mongoose.Schema.Types.ObjectId], default: []},
     comments: {type: [mongoose.Schema.Types.ObjectId], default: []},

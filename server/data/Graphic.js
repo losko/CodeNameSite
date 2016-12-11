@@ -4,7 +4,7 @@ let graphicSchema = mongoose.Schema({
     category: { type: String, required: true},
     name: { type: String, required: true },
     description: { type: String },
-    image: { type: String, required: false },
+    image: { type: String, required: true },
     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
     comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
     views: {type: Number},

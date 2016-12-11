@@ -5,7 +5,7 @@ block main-content
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Graphics
-                    form(method="POST" action="/graphics/create").form-login-my
+                    form(method="post" action="/graphics/create" enctype="multipart/form-data").form-login-my
                         .form-group
                             label.label-login-my(for='category') Category
                             select(id="category" class="form-control" name="category")

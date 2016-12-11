@@ -46,7 +46,7 @@ module.exports = {
             Comment.find({target: id}).populate('author').then(comments => {
                 literature.comments = comments
 
-                res.render('literature/details', literature)
+                res.render('comments/edit', literature)
             })
         })
     },
