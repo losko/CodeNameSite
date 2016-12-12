@@ -1,0 +1,44 @@
+extends ../shared/layout
+block main-content
+    main
+        .container.conteiner-my
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Graphics Edit
+                    if (globalError)
+                        h3= globalError
+                    form(method="post" action="/graphics/delete/"+id enctype="multipart/form-data").form-login-my
+                        .form-group
+                            label.label-login-my(for='category') Category
+                            select(id="category" class="form-control" name="category" disabled)
+                                if(category === "Photography")
+                                    option(selected="selected") Photography
+                                    option Drawing
+                                    option 3D Models
+                                    option Other
+                                if(category === "Drawing")
+                                    option Photography
+                                    option(selected="selected") Drawing
+                                    option 3D Models
+                                    option Other
+                                if(category === "3D Models")
+                                    option Photography
+                                    option Drawing
+                                    option(selected="selected") 3D Models
+                                    option Other
+                                if(category === "Other")
+                                    option Photography
+                                    option Drawing
+                                    option 3D Models
+                                    option(selected="selected") Other
+                        .form-group
+                            label.label-login-my(for='articleName') Name
+                            input#articleName.form-control(type='text' name="name" value=""+name disabled)
+                        .form-group
+                            label.label-login-my(for='description') Description
+                            input#description.form-control(type='text' name="description" value=""+description disabled)
+                        a(href='/graphics/details/' +id).btn.btn-default Cancel
+                        button.btn.btn-default(type='submit') Delete
+                .text-center
+                    image(src=image + '.png' class="image-edit-display ")
+    include ../shared/footer

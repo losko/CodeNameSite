@@ -8,7 +8,7 @@ block main-content
                 .form-group
                     label(for="input-file" class="label-login-my") Comment
                     textarea(type='text' id="input-file" class="form-control" name="comment")
-                button.btn.btn-default(type='submit') Submit
+                button.btn.btn-default(type='submit') Comment
         .row
             each comment in comments
                 p=comment.author.username

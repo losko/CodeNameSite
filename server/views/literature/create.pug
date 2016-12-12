@@ -3,8 +3,10 @@ block main-content
     main
         .container.conteiner-my
             .row
-                .col-sm-4.col-sm-offset-5
+                .col-mm-10.col-sm-offset-2
                     h1.text-center Literature
+                    if (globalError)
+                        h3= globalError
                     form(class="form-login-my" method="POST" action="/literature/create")
                         .form-group
                             label.label-login-my(for='category') Category

@@ -85,4 +85,16 @@ Remove file server/views/literature/comments.pug.
 Remove file server/views/literature/commentsEdit.pug.
 ---
 Added functionalyti for uploading and display images
+Added folde public/uploads
+---
+Added file server/views/graphics/delete.pug.
+Added file server/views/graphics/drawing.pug.
+Added file server/views/graphics/edit.pug.
+Added file server/views/graphics/error.pug.
+Added file server/views/graphics/other.pug.
+Added file server/views/graphics/photography.pug.
+Added file server/views/graphics/threeDmodels.pug.
+Added file server/views/literature/index.pug.
+Added functionality for navigate by category name for graphics.
+Added functionality for edit and delete graphic posts.
 ---

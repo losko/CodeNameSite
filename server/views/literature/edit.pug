@@ -5,6 +5,9 @@ block main-content
             .row
                 .col-sm-4.col-sm-offset-5
                     h1.text-center Edit Literature
+                    if (globalError)
+                        h3= globalError
+
                     form(class="form-login-my" method="POST" action="/literature/edit/"+id)
                         .form-group
                             label.label-login-my(for='category') Category

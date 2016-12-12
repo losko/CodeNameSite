@@ -55,6 +55,7 @@
 }
 .label-login-my {
     color: darkgrey;
+    width: 800px;
 }
 .footer-default-my {
     margin-top: 1%;
@@ -79,8 +80,8 @@
     padding-top: 6%;
 }
 .index-display {
-    width : 300px;
-    height: 200px;
+    max-width : 500px;
+    max-height: 400px;
     padding-left: 6px;
     padding-top: 2px;
     border: solid;
@@ -90,13 +91,19 @@
     overflow:hidden;
 }
 .image-display {
-    width : 270px;
-    height: 180px;
+    max-width : 450px;
+    max-height: 350px;
 }
 .image-details-display {
     max-width : 700px;
     max-height: 500px;
     padding: 5px;
+}
+.image-edit-display {
+    max-width : 700px;
+    max-height: 500px;
+    padding-left: 30%;
+    margin-left: -13%;
 }
 .inside-conteiner {
     margin: 5px;

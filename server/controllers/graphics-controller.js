@@ -16,26 +16,26 @@ module.exports = {
         "use strict";
         upload.any()
         let image = req.files[0]
-        fs.rename('public/uploads/' + image.filename, 'public/uploads/' + image.filename + '.png', function (err) {
-            if (err) throw err
-        })
+        if (image) {
+            fs.rename('public/uploads/' + image.filename, 'public/uploads/' + image.filename + '.png', function (err) {
+                if (err) throw err
+            })
+        }
 
         let graphicInput = req.body
 
         let errorMsg = ''
 
         if (!req.isAuthenticated()) {
-            console.log('Not logged')
+            errorMsg = 'Not Logged'
         } else if (!graphicInput.name) {
-            console.log('Invalid name')
-        } else if (!graphicInput.content) {
-            console.log('Invalid Content')
-        } else if (!graphicInput.description) {
-            console.log('Invalid Description')
+            errorMsg = 'Invalid Name'
         }
-
+        if (!image) {
+            errorMsg = "Missing Image"
+        }
         if (errorMsg) {
-            res.render('literature/create', {error: errorMsg})
+            res.render('graphics/create', { globalError: errorMsg })
             return
         }
 
@@ -75,5 +75,87 @@ module.exports = {
                 res.render('graphics/details', graphic)
             })
         })
+    },
+    editGet: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        Graphic.findById(id).then(graphic => {
+            res.render('graphics/edit', graphic)
+        })
+    },
+
+    editPost: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        let graphicArgs = req.body
+        let errorMsg = ''
+        if (!graphicArgs.name) {
+            errorMsg = 'Graphic name cannot be empty'
+        }
+
+        if (errorMsg) {
+            res.render('Graphics/details', { globalError: errorMsg })
+        } else {
+            Graphic.update({_id: id}, {
+                $set: {
+                    name: graphicArgs.name,
+                    category: graphicArgs.category,
+                    description: graphicArgs.description
+                }
+            })
+                .then(updateStatus => {
+                    res.redirect(`/graphics/details/${id}`)
+                })
+        }
+    },
+    deleteGet: (req, res) => {
+        "use strict";
+        let id = req.params.id
+
+        Graphic.findById(id).then(graphic => {
+            res.render('graphics/delete', graphic)
+        })
+    },
+
+    deletePost: (req, res) => {
+        "use strict";
+        let id = req.params.id
+        Graphic.findOneAndRemove({_id: id}).populate('author').then(graphic => {
+            graphic.prepareDelete()
+            res.redirect('/')
+        })
+    },
+    photographyGet: (req, res) => {
+        "use strict";
+        Graphic.find({category: "Photography"}).populate('author')
+            .then(photography => {
+                res.render('graphics/photography', {graphics: photography})
+            })
+    },
+
+    drawingGet: (req, res) => {
+        "use strict";
+        Graphic.find({category: "Drawing"}).populate('author')
+            .then(drawing => {
+                res.render('graphics/drawing', {graphics: drawing})
+            })
+    },
+
+    threeDmodelsGet: (req, res) => {
+        "use strict";
+        Graphic.find({category: "3D Models"}).populate('author')
+            .then(threeDmodels => {
+                res.render('graphics/threeDmodels', {graphics: threeDmodels})
+            })
+    },
+
+    otherGet: (req, res) => {
+        "use strict";
+        Graphic.find({category: "Other"}).populate('author')
+            .then(others => {
+                res.render('graphics/other', {graphics: others})
+            })
     },
 }

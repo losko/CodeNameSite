@@ -14,17 +14,15 @@ module.exports = {
         let errorMsg = ''
 
         if (!req.isAuthenticated()) {
-            console.log('Not logged')
+            errorMsg = 'Not logged'
         } else if (!literatureInput.name) {
-            console.log('Invalid name')
+            errorMsg = 'Invalid name'
         } else if (!literatureInput.content) {
-            console.log('Invalid Content')
-        } else if (!literatureInput.description) {
-            console.log('Invalid Description')
+            errorMsg = 'Invalid Content'
         }
 
         if (errorMsg) {
-            res.render('literature/create', {error: errorMsg})
+            res.render('literature/create', { globalError: errorMsg })
             return
         }
 
@@ -112,6 +110,13 @@ module.exports = {
             literature.prepareDelete()
             res.redirect('/')
         })
+    },
+    index: (req, res) => {
+        "use strict";
+        Literature.find({}).populate('author')
+            .then(content => {
+                res.render('home/index', {content: content})
+            })
     },
 
     poetryGet: (req, res) => {

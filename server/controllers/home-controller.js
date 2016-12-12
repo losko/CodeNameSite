@@ -5,7 +5,7 @@ const Graphic = mongoose.model('Graphic')
 module.exports = {
     index: (req, res) => {
         "use strict";
-        Graphic.find({}).populate('author')
+        Literature.find({}).populate('author')
             .then(content => {
                 res.render('home/index', {content: content})
             })

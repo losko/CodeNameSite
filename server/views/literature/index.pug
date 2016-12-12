@@ -8,9 +8,7 @@ block main-content
                 a(href="/literature/details/"+item.id)
                     h2.text-center=item.name
                     .index-display
-
                         .inside-conteiner
-                            //image(src=item.image+'.png').image-display
                             p=item.content
                     a(href="#")
                         small=item.author.username
