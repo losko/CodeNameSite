@@ -36,6 +36,7 @@ module.exports = (app) => {
     app.get('/graphics/index', controllers.graphics.index)
 
     app.get('/graphics/details/:id', controllers.graphics.graphicDetails)
+    app.get('/graphics/detailsReal/:id', controllers.graphics.graphicDetailsReal)
 
     app.get('/graphics/edit/:id', auth.isAuthenticated, controllers.graphics.editGet)
     app.post('/graphics/edit/:id', auth.isAuthenticated, controllers.graphics.editPost)
@@ -50,11 +51,11 @@ module.exports = (app) => {
 
     app.post('/comments/create', auth.isAuthenticated, controllers.comment.commentPost)
 
-    app.get('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editGet)
-    app.post('/comment/edit/:id', auth.isAuthenticated, controllers.comment.editPost)
+    app.get('/comment/edit/:_id', auth.isAuthenticated, controllers.comment.editGet)
+    app.post('/comment/edit/:_id', auth.isAuthenticated, controllers.comment.editPost)
 
-    app.get('/comment/delete/:id', auth.isAuthenticated, controllers.comment.deletePost)
-    app.post('/comment/delete/:id', auth.isAuthenticated, controllers.comment.deletePost)
+    app.get('/comment/delete/:_id', auth.isAuthenticated, controllers.comment.deleteGet)
+    app.post('/comment/delete/:_id', auth.isAuthenticated, controllers.comment.deletePost)
 
     app.get('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editGet)
     app.post('/literature/edit/:id', auth.isAuthenticated, controllers.literatures.editPost)

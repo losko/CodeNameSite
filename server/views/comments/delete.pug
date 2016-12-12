@@ -8,5 +8,5 @@ block main-content
                     input#literatureName.form-control(type='text' name="target" value=""+comment._id style="Display: none")
                 .form-group
                     label(for="input-file" class="label-login-my") Comment
-                    textarea(type='text' id="input-file" class="form-control" name="comment")=comment
-                button.btn.btn-default(type='submit') Edit
+                    textarea(type='text' id="input-file" class="form-control" name="comment" disabled)=comment
+                button.btn.btn-default(type='submit') Delete

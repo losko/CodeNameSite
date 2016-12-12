@@ -1,16 +1,14 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Details
-        if (globalError)
-            h3= globalError
         .row
             .col-md-12
-            h2(class)=name
+            h2(class="text-center")=name
             .details-display
                 .details-conteiner
-            image(src=image+'.png').image-details-display
-                p=author.username
+            a(href=href="/graphics/detailsReal/"+id)
+                image(src=image+'.png').image-details-display
+            p=author.username
             p=description
             p=category
             p=date

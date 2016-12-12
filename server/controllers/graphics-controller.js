@@ -14,9 +14,10 @@ module.exports = {
     },
     createGraphic: (req, res) => {
         "use strict";
-        upload.any()
+
         let image = req.files[0]
-        if (image) {
+        if (image.mimetype === 'image/jpeg' || image.mimetype === 'image/png') {
+            upload.any()
             fs.rename('public/uploads/' + image.filename, 'public/uploads/' + image.filename + '.png', function (err) {
                 if (err) throw err
             })
@@ -73,6 +74,19 @@ module.exports = {
             Comment.find({target: id}).populate('author').then(comments => {
                 graphic.comments = comments
                 res.render('graphics/details', graphic)
+            })
+        })
+    },
+    graphicDetailsReal: (req, res) => {
+        "use strict";
+        let id = req.params.id;
+
+        Graphic.findById(id).populate('author').then(graphic => {
+            graphic.views ++
+            graphic.save()
+            Comment.find({target: id}).populate('author').then(comments => {
+                graphic.comments = comments
+                res.render('graphics/detailsReal', graphic)
             })
         })
     },

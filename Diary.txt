@@ -98,3 +98,8 @@ Added file server/views/literature/index.pug.
 Added functionality for navigate by category name for graphics.
 Added functionality for edit and delete graphic posts.
 ---
+Added file server/views/comments/delete.pug.
+Added file server/views/graphics/detalsReal.pug.
+Added functionality for edit and delete comments.
+Added functionality for display image up to Full HD size
+---

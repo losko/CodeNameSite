@@ -10,21 +10,21 @@ block main-content
                     form.form-login-my(method="post" action="/users/create")
                         .form-group
                             label.label-login-my(for="username" class="label-login-my") Username
-                            input.label-login-my(type="text" name="username" id="username" value=username class="form-control")
+                            input.label-login-my(type="text" name="username" id="username" value=username class="form-control" required="true")
                         .form-group
                             label.label-login-my(for="password" class="label-login-my") Password
-                            input.label-login-my(type="password" name="password" id="password" class="form-control")
+                            input.label-login-my(type="password" name="password" id="password" class="form-control" required="true")
                         .form-group
                             label.label-login-my(for="confirm-password" class="label-login-my") Confirm Password
-                            input.label-login-my(type="password" name="confirmPassword" id="confirm-password" class="form-control")
+                            input.label-login-my(type="password" name="confirmPassword" id="confirm-password" class="form-control" required="true")
                         .form-group
                             label.label-login-my(for="first-name" class="label-login-my") First Name
                             input.label-login-my(type="text" name="firstName" id="first-name" class="form-control" required="true")
                         .form-group
                             label.label-login-my(for="last-name" class="label-login-my") Last Name
-                            input.label-login-my(type="text" name="lastName" id="last-name" class="form-control")
+                            input.label-login-my(type="text" name="lastName" id="last-name" class="form-control" required="true")
                         .form-group
                             label.label-login-my(for="email" class="label-login-my") Email
-                            input.label-login-my(type="email" name="email" id="email" class="form-control")
+                            input.label-login-my(type="email" name="email" id="email" class="form-control" required="true")
                         button.btn.btn-default(type='submit') Register
     include ../shared/footer

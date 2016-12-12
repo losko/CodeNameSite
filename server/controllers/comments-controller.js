@@ -19,7 +19,7 @@ module.exports = {
                             if (err) {
                                 res.redirect('/', {error: err.message})
                             } else {
-                                res.redirect('/literature/details/'+id)
+                                res.redirect('/literature/details/' + id)
                             }
                         })
                     } else {
@@ -30,7 +30,7 @@ module.exports = {
                                 if (err) {
                                     res.redirect('/', {error: err.message})
                                 } else {
-                                    res.redirect('/graphics/details/'+id)
+                                    res.redirect('/graphics/details/' + id)
                                 }
                             })
                         })
@@ -41,24 +41,48 @@ module.exports = {
     },
     editGet: (req, res) => {
         "use strict";
-        let id = req.params.id
-        Literature.findById(id).populate('author').then(literature => {
-            Comment.find({target: id}).populate('author').then(comments => {
-                literature.comments = comments
-
-                res.render('comments/edit', literature)
-            })
+        let id = req.params._id
+        Comment.findById(id).then(comment => {
+            res.render('comments/edit', comment)
         })
+
     },
     editPost: (req, res) => {
         "use strict";
+        let id = req.params._id
+        let commentArgs = req.body
+        let errorMsg = ''
+        if (!commentArgs.comment) {
+            errorMsg = 'Comment name cannot be empty'
+        }
 
-    },deleteGet: (req, res) => {
+        if (errorMsg) {
+            res.render('/', {globalError: errorMsg})
+        } else {
+            Comment.update({_id: id}, {
+                $set: {
+                    comment: commentArgs.comment
+                }
+            })
+                .then(updateStatus => {
+                    res.redirect('/')
+                })
+        }
+    },
+    deleteGet: (req, res) => {
         "use strict";
+        let id = req.params._id
+        Comment.findById(id).then(comment => {
+            res.render('comments/delete', comment)
+        })
 
     },
     deletePost: (req, res) => {
         "use strict";
-
+        let id = req.params._id
+        Comment.findOneAndRemove({_id: id}).populate('author').then(comment => {
+            comment.prepareDelete()
+            res.redirect('/')
+        })
     }
 }

@@ -26,6 +26,8 @@
     margin-top: 3.4%;
     border-radius: 0;
     height: 100%;
+
+
 }
 
 .navbar-fixed-left .navbar-nav > li {
@@ -42,9 +44,11 @@
     margin-top: -50px;
     margin-left: 140px;
 }
+
 .panel-group{
     margin-bottom: -5%;
 }
+
 .form-login-my {
     margin-top: 10%;
     padding: 20px;
@@ -53,58 +57,86 @@
     border-radius: 10px;
     background-color: #222222;
 }
+
 .label-login-my {
     color: darkgrey;
-    width: 800px;
 }
+
 .footer-default-my {
     margin-top: 1%;
 }
+
 .form-search-leftNav-my {
     margin-top: 10%;
     color: #888888;
 }
+
 .img-thumbnail-my {
     width: 10%;
     height: 10%;
     margin: 10px;
 }
+
 .file-my{
     color: #888888;
     background-color: #ffffff;
 }
+
 .log-out-my {
     margin-left: 6px;
 }
+
 .conteiner-my {
-    padding-top: 6%;
+    padding-top: 2%;
 }
+
 .index-display {
-    max-width : 500px;
-    max-height: 400px;
-    padding-left: 6px;
-    padding-top: 2px;
+    max-width : 450px;
+    max-height: 350px;
+    padding: 2px;
     border: solid;
     border-color: #00ff8c;
     border-radius: 10px;
     word-wrap:  break-word;
     overflow:hidden;
 }
+
 .image-display {
-    max-width : 450px;
-    max-height: 350px;
+    max-width : 280px;
+    max-height: 300px;
 }
+
 .image-details-display {
-    max-width : 700px;
-    max-height: 500px;
+    max-width : 1100px;
+    max-height: 1000px;
     padding: 5px;
 }
+
 .image-edit-display {
     max-width : 700px;
     max-height: 500px;
     padding-left: 30%;
     margin-left: -13%;
 }
+
+.image-display-max {
+    max-width : 1920px;
+    max-height: 1080px;
+    margin-left: -20%;
+}
+
 .inside-conteiner {
     margin: 5px;
 }
+.image-displ {
+    padding-right: 390px;
+}
+
+.list-group-item-my{
+    background-color: #808080;
+}
+
+.li-text {
+    color: white;
+}
+
