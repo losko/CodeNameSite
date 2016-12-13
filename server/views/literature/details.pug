@@ -8,7 +8,7 @@ block main-content
             .details-display
                 .details-conteiner
                     p=content
-            a(href="#")
+            a(href="/users/profile/"+author.id)
                 p=author.username
             p=description
             p=category
@@ -18,5 +18,5 @@ block main-content
                 a.btn.btn-success.btn-xs(href='/literature/edit/'+id) Edit »
                 a.btn.btn-danger.btn-xs(href='/literature/delete/'+id) Delete »
         a.btn.btn-default.btn-xs(href='/') Back »
-    include ../comments/create
+        include ../comments/create
     include ../shared/footer

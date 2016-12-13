@@ -1,0 +1,54 @@
+extends ../shared/layout
+block main-content
+    .container.conteiner-my
+        h1.text-center=user.username+' Profile'
+        .row
+            .graphics
+                h2 Graphics
+                each item in user.graphics
+                    .col-sm-4
+                        a(href="/graphics/details/"+item.id)
+                            h2.text-center=item.name
+                            .index-display-image
+                                .inside-conteiner
+                                    image(src=item.image+'.png').image-display
+                                    p=item.content
+                            a(href="/users/profile/"+item.author.id)
+                                small Author : &nbsp;
+                                span=item.author.username
+                            p
+                                small Category : &nbsp;
+                                small=item.category
+                                br
+                                small Views : &nbsp;
+                                small=item.views
+        .row
+            .literature
+                h2 Literature
+                each item in user.literature
+                    .col-sm-4
+                        a(href="/literature/details/" + item.id)
+                            h2.text-center=item.name
+                            .index-display-image
+                                .inside-conteiner
+                                    p=item.content
+                            a(href="/users/profile/"+item.author.id)
+                                small Author : &nbsp;
+                                span=item.author.username
+                            p
+                                small Category : &nbsp;
+                                small=item.category
+                                br
+                                small Views : &nbsp;
+                                small=item.views
+        .row
+            .comments
+                h2 Comments
+                if(user.comments)
+                    each item in user.comments
+                        .col-sm-4
+                            p=item.comment
+                else
+                    .col-sm-4
+                        h3 Not comment yet
+    include ../shared/footer

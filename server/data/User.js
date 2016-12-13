@@ -8,9 +8,9 @@ let userSchema = mongoose.Schema({
     firstName: { type: String, required: requiredValidationMessage},
     lastName: { type: String, required: requiredValidationMessage},
     email: { type: String, required: requiredValidationMessage, unique: true},
-    literature: {type: [mongoose.Schema.Types.ObjectId], default: []},
-    graphics: {type: [mongoose.Schema.Types.ObjectId], default: []},
-    comments: {type: [mongoose.Schema.Types.ObjectId], default: []},
+    literature: [{type: mongoose.Schema.Types.ObjectId, ref: 'Literature'}],
+    graphics: [{type: mongoose.Schema.Types.ObjectId, ref: 'Graphic'}],
+    comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
     salt: String,
     hashedPass: String,
     roles: [String]

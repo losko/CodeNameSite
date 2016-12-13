@@ -3,9 +3,9 @@ block main-content
     .container.conteiner-my
         .row
             .col-md-12
-            h2(class="text-center")=name
-            .details-display
-                .details-conteiner
-                a(href=href="/graphics/details/"+id)
-                    image(src=image+'.png').image-display-max
+                h2(class="text-center")=name
+                .details-display
+                    .details-conteiner
+                        a(href=href="/graphics/details/"+id)
+                            image(src=image+'.png').image-display-max
     include ../shared/footer

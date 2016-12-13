@@ -8,8 +8,9 @@ block main-content
                 .details-conteiner
             a(href=href="/graphics/detailsReal/"+id)
                 image(src=image+'.png').image-details-display
-            p=author.username
-            p=description
+            a(href="/users/profile/"+author.id)
+                p=author.username
+            p.description=description
             p=category
             p=date
         if(currentUser)
@@ -17,5 +18,5 @@ block main-content
                 a.btn.btn-success.btn-xs(href='/graphics/edit/'+id) Edit »
                 a.btn.btn-danger.btn-xs(href='/graphics/delete/'+id) Delete »
         a.btn.btn-default.btn-xs(href='/') Back »
-    include ../comments/create
+        include ../comments/create
     include ../shared/footer

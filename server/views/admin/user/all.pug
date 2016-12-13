@@ -17,7 +17,8 @@ block main-content
                         each user in users
                             if(user.username === 'Admin')
                                 tr(class='info')
-                                    td=user.id
+                                    td
+                                        a(href="/users/profile/"+user.id)=user.id
                                     td=user.username
                                     td=user.firstName
                                     td=user.lastName
@@ -27,7 +28,8 @@ block main-content
                                         a(class="btn" href='/admin/user/delete/'+user.id) Delete
                             else
                                 tr
-                                    td=user.id
+                                    td
+                                        a(href="/users/profile/"+user.id)=user.id
                                     td=user.username
                                     td=user.firstName
                                     td=user.lastName

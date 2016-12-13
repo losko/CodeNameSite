@@ -6,8 +6,10 @@ module.exports = {
     index: (req, res) => {
         "use strict";
         Literature.find({}).populate('author')
-            .then(content => {
-                res.render('home/index', {content: content})
+            .then(literature => {
+                Graphic.find({}).populate('author').then(graphics => {
+                    res.render('home/index', {literature: literature, graphics})
+                })
             })
     },
     about: (req, res) => {

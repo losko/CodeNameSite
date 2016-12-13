@@ -22,7 +22,7 @@ module.exports = {
         }
 
         if (errorMsg) {
-            res.render('literature/create', { globalError: errorMsg })
+            res.render('literature/create', {globalError: errorMsg})
             return
         }
 
@@ -47,7 +47,7 @@ module.exports = {
         let id = req.params.id;
 
         Literature.findById(id).populate('author').then(literature => {
-            literature.views ++
+            literature.views++
             literature.save()
             Comment.find({target: id}).populate('author').then(comments => {
                 literature.comments = comments
@@ -115,7 +115,7 @@ module.exports = {
         "use strict";
         Literature.find({}).populate('author')
             .then(content => {
-                res.render('home/index', {content: content})
+                res.render('literature/index', {content: content})
             })
     },
 
@@ -149,21 +149,5 @@ module.exports = {
             .then(others => {
                 res.render('literature/other', {literatures: others})
             })
-    },
-
-    searchPost: (req, res) => {
-        "use strict";
-        let search = req.body
-        if (search.search === '') {
-            Literature.find({}).populate('author')
-                .then(search => {
-                    res.render('literature/search', {literatures: search})
-                })
-        } else {
-            Literature.find({name: search.search}).populate('author')
-                .then(search => {
-                    res.render('literature/search', {literatures: search})
-                })
-        }
     }
 }

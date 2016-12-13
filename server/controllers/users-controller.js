@@ -8,11 +8,11 @@ module.exports = {
     create: (req, res) => {
         let user = req.body
 
-        User.findOne({ username: user.username}, function (err, person) {
+        User.findOne({username: user.username}, function (err, person) {
             if (err) {
 
             } else if (person) {
-                res.render('users/register', { globalError: 'Username already exist' })
+                res.render('users/register', {globalError: 'Username already exist'})
                 return
             }
             else {
@@ -28,19 +28,18 @@ module.exports = {
                         .then(user => {
                             req
                                 .logIn(user, (err) => {
-                                if (err) {
-                                    res.render('users/register', { globalError: 'Ooops 500' })
-                                    return
-                                }
-                                res.redirect('/')
-                            })
+                                    if (err) {
+                                        res.render('users/register', {globalError: 'Ooops 500'})
+                                        return
+                                    }
+                                    res.redirect('/')
+                                })
                         })
                 }
             }
 
 
         })
-
 
 
     },
@@ -52,16 +51,16 @@ module.exports = {
         let inputUser = req.body
 
         User
-            .findOne({ username: inputUser.username })
+            .findOne({username: inputUser.username})
             .then(user => {
                 if (!user) {
-                    res.render('users/login', { globalError: 'Invalid username or password' })
+                    res.render('users/login', {globalError: 'Invalid username or password'})
                 } else if (!user.authenticate(inputUser.password)) {
-                    res.render('users/login', { globalError: 'Invalid username or password' })
+                    res.render('users/login', {globalError: 'Invalid username or password'})
                 } else {
                     req.logIn(user, (err, user) => {
                         if (err) {
-                            res.render('users/login', { globalError: 'Ooops 500' })
+                            res.render('users/login', {globalError: 'Ooops 500'})
                             return
                         }
 
@@ -70,6 +69,24 @@ module.exports = {
                 }
             })
     },
+
+    profileGet: (req, res) => {
+        "use strict";
+        let id = req.params.id;
+
+        User.findById(id).populate('literature graphics comments').then(user => {
+
+            let Comment = require('mongoose').model('Comment')
+            Comment.find({author: id}).populate('target').then(comments => {
+                user.comments = comments
+
+                res.render('users/profile', {user: user})
+            })
+
+            
+        })
+    },
+
     logout: (req, res) => {
         "use strict";
         req.logout()

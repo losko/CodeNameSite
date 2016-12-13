@@ -7,13 +7,18 @@ block main-content
             .col-sm-4
                 a(href="/graphics/details/"+item.id)
                     h2.text-center=item.name
-                    .index-display
+                    .index-display-image
                         .inside-conteiner
                             image(src=item.image+'.png').image-display
                             p=item.content
-                    a(href="#")
-                        small=item.author.username
+                    a(href="/users/profile/"+item.author.id)
+                        small Author : &nbsp;
+                        span=item.author.username
                     p
+                        small Category : &nbsp;
+                        small=item.category
+                        br
+                        small Views : &nbsp;
                         small=item.views
 
     include ../shared/footer

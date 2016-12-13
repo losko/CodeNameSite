@@ -11,7 +11,9 @@ block main-content
                 button.btn.btn-default(type='submit') Comment
         .row
             each comment in comments
-                p=comment.author.username
+                span Commented by : &nbsp;
+                a(href="/users/profile/"+comment.author.id)
+                    span=comment.author.username
                 p=comment.comment
                 p=comment.date
                 p=comment._id

@@ -5,15 +5,19 @@ block main-content
         .row
         each item in literatures
             .col-sm-4
-                a(href="/literature/details/"+item.id)
+                a(href="/literature/details/" + item.id)
                     h2.text-center=item.name
                     .index-display
-
                         .inside-conteiner
                             p=item.content
-                    a(href="#")
-                        small=item.author.username
-                    p
-                        small=item.views
+                small Author : &nbsp;
+                a(href="/users/profile/" + item.author.id)
+                    span=item.author.username
+                p
+                    small Category : &nbsp;
+                    small=item.category
+                    br
+                    small Views : &nbsp;
+                    small=item.views
     include ../shared/footer
 

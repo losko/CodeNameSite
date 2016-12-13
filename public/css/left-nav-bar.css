@@ -100,10 +100,16 @@
     word-wrap:  break-word;
     overflow:hidden;
 }
+.index-display-image {
+    max-width : 450px;
+    max-height: 350px;
+    padding: 2px;
+}
 
 .image-display {
     max-width : 280px;
     max-height: 300px;
+    border-radius: 10px;
 }
 
 .image-details-display {
@@ -122,7 +128,7 @@
 .image-display-max {
     max-width : 1920px;
     max-height: 1080px;
-    margin-left: -20%;
+    margin-left: -140px;
 }
 
 .inside-conteiner {
@@ -138,5 +144,11 @@
 
 .li-text {
     color: white;
+}
+
+.description {
+    border: solid;
+    border-color: #888888;
+    padding: 5px;
 }
 

@@ -38,7 +38,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                                         a(href='/literature/create') Literature
                         li
                         li
-                            a(href="/users/register")
+                            a(href="/users/profile/"+currentUser.id)
                                 span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
                         li
                             form#logout-form(method="post" action="/users/logout")
@@ -55,7 +55,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                                         a(href='/literature/create') Literature
                         li
                         li
-                            a(href="/users/register")
+                            a(href="/users/profile/"+currentUser.id)
                                 span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
                         li
                             form#logout-form(method="post" action="/users/logout")
@@ -107,7 +107,7 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         a(href='/literature/novels').li-text Novels
                     li.list-group-item.list-group-item-my
                         a(href='/literature/other').li-text Other
-    form(method='post' action='/literature/search').form-search-leftNav-my
+    form(method='post' action='/search/search').form-search-leftNav-my
         #custom-search-input
             .input-group.col-md-12
                 input.form-control.input-sm(type='text', placeholder='Search by name' name="search")
