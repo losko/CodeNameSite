@@ -8,6 +8,9 @@ block main-content
                 .details-conteiner
             a(href=href="/graphics/detailsReal/"+id)
                 image(src=image+'.png').image-details-display
+            .form-group
+                form(method="post" action="/graphics/download/"+id).text-center
+                    button.btn.btn-default(type='submit') Download
             a(href="/users/profile/"+author.id)
                 p=author.username
             p.description=description

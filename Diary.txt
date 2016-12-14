@@ -103,3 +103,15 @@ Added file server/views/graphics/detalsReal.pug.
 Added functionality for edit and delete comments.
 Added functionality for display image up to Full HD size
 ---
+Added file server/controllers/search-controller.js.
+Added folder server/views/search.
+Moved file from server/views/literature/search.pug to server/views/search/search.pug.
+Added file server/views/users/profile.pug.
+Added functionality for search by name in both Graphic and Literature collection.
+Added functionality for show both Literature and Graphics collection in index.
+--- 
+Added functionality for downlaod image.
+Added limitation for uploading image max to 1mb.
+Added file server/views/users/edit.pug.
+Added functionality for users to edit personal data / change Email and Password
+---

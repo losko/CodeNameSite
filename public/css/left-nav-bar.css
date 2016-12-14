@@ -1,3 +1,6 @@
+body {
+    background-color: #c6dfe8;
+}
 .navbar-fixed-left {
     width: 140px;
     position: fixed;

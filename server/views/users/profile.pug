@@ -2,6 +2,26 @@ extends ../shared/layout
 block main-content
     .container.conteiner-my
         h1.text-center=user.username+' Profile'
+        if (globalError)
+            h3=globalError
+        .row
+            .graphics
+                h2 Personal Data
+                .persomal-data
+                    p
+                        span Username : &nbsp;
+                        span=user.username
+                    p
+                        span First name : &nbsp;
+                        span=user.firstName
+                    p
+                        span Last name : &nbsp;
+                        span=user.lastName
+                    p
+                        span Email : &nbsp;
+                        span=user.email
+                    .form-group
+                            a.btn.btn-default(href="/users/edit/" + user.id) Edit Profile
         .row
             .graphics
                 h2 Graphics

@@ -20,6 +20,9 @@ module.exports = (app) => {
 
     app.get('/users/profile/:id', auth.isAuthenticated, controllers.users.profileGet)
 
+    app.get('/users/edit/:id', auth.isAuthenticated, controllers.users.editGet)
+    app.post('/users/edit/:id', auth.isAuthenticated, controllers.users.editPost)
+
     app.post('/users/logout', controllers.users.logout)
 
     //Unused Routes
@@ -31,6 +34,8 @@ module.exports = (app) => {
     app.get('/graphics/drawing', controllers.graphics.drawingGet)
     app.get('/graphics/threeDmodels', controllers.graphics.threeDmodelsGet)
     app.get('/graphics/other', controllers.graphics.otherGet)
+
+    app.post('/graphics/download/:id', controllers.graphics.downloadPost)
 
     app.get('/graphics/create',auth.isAuthenticated,  controllers.graphics.graphicGet)
     app.post('/graphics/create',auth.isAuthenticated,  controllers.graphics.createGraphic)
