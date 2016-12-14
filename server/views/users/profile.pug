@@ -20,7 +20,9 @@ block main-content
                     p
                         span Email : &nbsp;
                         span=user.email
-                    .form-group
+                if(currentUser)
+                    if(currentUser.username === user.username || currentUser.username === 'Admin')
+                        .form-group
                             a.btn.btn-default(href="/users/edit/" + user.id) Edit Profile
         .row
             .graphics

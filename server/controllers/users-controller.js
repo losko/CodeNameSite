@@ -7,7 +7,6 @@ module.exports = {
     },
     create: (req, res) => {
         let user = req.body
-
         User.findOne({username: user.username}, function (err, person) {
             if (err) {
 
@@ -71,6 +70,7 @@ module.exports = {
         "use strict";
         let id = req.params.id;
 
+
         User.findById(id).populate('literature graphics comments').then(user => {
 
             let Comment = require('mongoose').model('Comment')
@@ -87,11 +87,14 @@ module.exports = {
     editGet: (req, res) => {
         "use strict";
         let id = req.params.id
-        User.findById(id).then(user => {
-            res.render('users/edit', user)
+        if (req.user._id == id) {
+            User.findById(id).then(user => {
+                res.render('users/edit', user)
 
-        })
-
+            })
+        } else {
+            res.redirect('/')
+        }
     },
 
     editPost: (req, res) => {
