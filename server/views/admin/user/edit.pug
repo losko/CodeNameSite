@@ -1,19 +1,16 @@
-extends ../shared/layout
+extends ../../shared/layout
 block main-content
     main
         .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Edit User
+                    h1.text-center Edit User By Admin
                     if (globalError)
                         h3=globalError
-                        form.form-login-my(method="post" action="/users/edit/"+id enctype="multipart/form-data")
+                        form.form-login-my(method="post" action="/admin/user/edit/"+id )
                             .form-group
                                 label.label-login-my(for="username" class="label-login-my") Username
                                 input.label-login-my(type="text" name="username" id="username" value=""+user.username  class="form-control")
-                            .form-group
-                                label.label-login-my(for="oldPassword" class="label-login-my") Old Password
-                                input.label-login-my(type="password" name="oldPassword" id="oldPassword" class="form-control" required="true")
                             .form-group
                                 label.label-login-my(for="password" class="label-login-my") New Password
                                 input.label-login-my(type="password" name="password" id="password" class="form-control" required="true")
@@ -31,13 +28,10 @@ block main-content
                                 input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value=""+user.email)
                             button.btn.btn-default(type='submit') Register
                     else
-                        form.form-login-my(method="post" action="/users/edit/" + id enctype="multipart/form-data")
+                        form.form-login-my(method="post" action="/admin/user/edit/"+id enctype="multipart/form-data")
                             .form-group
                                 label.label-login-my(for="username" class="label-login-my") Username
                                 input.label-login-my(type="text" name="username" id="username" value="" + username  class="form-control")
-                            .form-group
-                                label.label-login-my(for="oldPassword" class="label-login-my") Old Password
-                                input.label-login-my(type="password" name="oldPassword" id="oldPassword" class="form-control" required="true")
                             .form-group
                                 label.label-login-my(for="password" class="label-login-my") New Password
                                 input.label-login-my(type="password" name="password" id="password" class="form-control" required="true")
@@ -54,4 +48,4 @@ block main-content
                                 label.label-login-my(for="email" class="label-login-my") Email
                                 input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value="" + email)
                             button.btn.btn-default(type='submit') Edit
-    include ../shared/footer
+    include ../../shared/footer

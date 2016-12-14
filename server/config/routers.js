@@ -81,6 +81,12 @@ module.exports = (app) => {
     //Admin routes
     app.get('/admin/user/all', auth.isInRole('Admin'), adminController.user.all)
 
+    app.get('/admin/user/edit/:id', auth.isInRole('Admin'), adminController.user.editGet)
+    app.post('/admin/user/edit/:id', auth.isInRole('Admin'), adminController.user.editPost)
+
+    /*app.get('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deleteGet)
+    app.post('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deletePost)*/
+
     //Wrong Routes
     app.all('*', (req, res) => {
         res.status(404)
