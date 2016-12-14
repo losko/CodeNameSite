@@ -84,8 +84,8 @@ module.exports = (app) => {
     app.get('/admin/user/edit/:id', auth.isInRole('Admin'), adminController.user.editGet)
     app.post('/admin/user/edit/:id', auth.isInRole('Admin'), adminController.user.editPost)
 
-    /*app.get('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deleteGet)
-    app.post('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deletePost)*/
+    app.get('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deleteGet)
+    app.post('/admin/user/delete/:id', auth.isInRole('Admin'), adminController.user.deletePost)
 
     //Wrong Routes
     app.all('*', (req, res) => {

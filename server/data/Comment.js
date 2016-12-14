@@ -36,6 +36,9 @@ commentSchema.method({
         })
     }
 })
+
+commentSchema.set('versionKey', false);
+
 const Comment = mongoose.model('Comment', commentSchema)
 
 module.exports = Comment

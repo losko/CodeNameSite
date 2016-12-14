@@ -1,0 +1,23 @@
+extends ../../shared/layout
+block main-content
+    main
+        .container.conteiner-my
+            .row
+                .col-sm-4.col-sm-offset-5
+                    h1.text-center Deleted User By Admin
+                    form.form-login-my(method="post" action="/admin/user/delete/"+user.id )
+                        .form-group
+                            label.label-login-my(for="username" class="label-login-my") Username
+                            input.label-login-my(type="text" name="username" id="username" value="" + user.username  class="form-control" disabled)
+                        .form-group
+                            label.label-login-my(for="first-name" class="label-login-my" ) First Name
+                            input.label-login-my(type="text" name="firstName" id="first-name" class="form-control" required="true" value="" + user.firstName disabled)
+                        .form-group
+                            label.label-login-my(for="last-name" class="label-login-my" ) Last Name
+                            input.label-login-my(type="text" name="lastName" id="last-name" class="form-control" required="true" value="" + user.lastName disabled)
+                        .form-group
+                            label.label-login-my(for="email" class="label-login-my") Email
+                            input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value="" + user.email disabled)
+                        button.btn.btn-danger(type='submit') Delete
+
+    include ../../shared/footer

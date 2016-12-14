@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const fs = require('fs')
 const encryption = require('../utilities/encryption')
 
 let requiredValidationMessage = '{PATH} is required'
@@ -24,8 +25,39 @@ userSchema.method({
         } else {
             return false
         }
+    },
+    prepareDelete: function () {
+        let Comment = mongoose.model('Comment')
+        for (let comment of this.comments) {
+            Comment.findById(comment).then(comment => {
+                comment.prepareDelete()
+                comment.remove()
+            })
+        }
+
+        let Literature = mongoose.model('Literature')
+        for (let literature of this.literature) {
+            Literature.findById(literature).then(literature => {
+                "use strict";
+                literature.prepareDelete()
+                literature.remove()
+            })
+        }
+
+        let Graphic = mongoose.model('Graphic')
+        for (let graphic of this.graphics) {
+            Graphic.findById(graphic).then(graphic => {
+                "use strict";
+                let lifePath = 'public'+graphic.image+'.png'
+                fs.unlinkSync(lifePath)
+                graphic.prepareDelete()
+                graphic.remove()
+            })
+        }
     }
 })
+
+userSchema.set('versionKey', false);
 
 let User = mongoose.model('User', userSchema)
 

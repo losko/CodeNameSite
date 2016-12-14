@@ -115,3 +115,11 @@ Added limitation for uploading image max to 1mb.
 Added file server/views/users/edit.pug.
 Added functionality for users to edit personal data / change Email and Password
 ---
+Added security for edit user profile.
+---
+Added file server/views/admin/user/edit.pug.
+Added functionality for Admin to Edite user profile from admin panel.
+---
+Added file server/views/admin/user/delete.pug.
+Added functionality for Admin to delete users from admin panel.
+---

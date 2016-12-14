@@ -40,6 +40,8 @@ graphicSchema.method({
     }
 })
 
+graphicSchema.set('versionKey', false);
+
 const Graphic = mongoose.model('Graphic', graphicSchema)
 
 module.exports = Graphic

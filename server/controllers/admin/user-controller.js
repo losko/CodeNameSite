@@ -13,7 +13,6 @@ module.exports = {
         let id = req.params.id
         User.findById(id).then(user => {
             res.render('admin/user/edit', user)
-
         })
     },
     editPost: (req, res) => {
@@ -96,10 +95,19 @@ module.exports = {
     },
     deleteGet: (req, res) => {
         "use strict";
+        let id = req.params.id
 
+        User.findById(id).then(user => {
+            res.render('admin/user/delete', {user: user})
+        })
     },
     deletePost: (req, res) => {
         "use strict";
+        let id = req.params.id;
 
+        User.findOneAndRemove({_id: id}).then(user => {
+            user.prepareDelete();
+            res.redirect('/admin/user/all');
+        })
     }
 }
