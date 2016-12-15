@@ -12,9 +12,9 @@ module.exports = {
                     })
                 })
         } else {
-            Literature.find({name: search.search}).populate('author')
+            Literature.find({name: {$regex: search.search}}).populate('author')
                 .then(resultL => {
-                    Graphic.find({name: search.search}).populate('author').then(resultG => {
+                    Graphic.find({name: {$regex: search.search}}).populate('author').then(resultG => {
                         res.render('search/search', {resultG: resultG, resultL})
                     })
                 })

@@ -123,3 +123,4 @@ Added functionality for Admin to Edite user profile from admin panel.
 Added file server/views/admin/user/delete.pug.
 Added functionality for Admin to delete users from admin panel.
 ---
+Added functionality for search by substring of name.
