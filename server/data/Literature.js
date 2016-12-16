@@ -39,8 +39,8 @@ literatureSchema.method({
         }
     }
 })
-
 literatureSchema.set('versionKey', false);
+
 
 const Literature = mongoose.model('Literature', literatureSchema)
 

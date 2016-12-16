@@ -5,7 +5,9 @@ const adminController = require('../controllers/admin/admin-controller')
 module.exports = (app) => {
     "use strict";
     //Home Routes
+    app.get('/:page', controllers.home.index)
     app.get('/', controllers.home.index)
+
     app.get('/about', controllers.home.about)
 
     //Search Routes

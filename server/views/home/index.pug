@@ -37,6 +37,18 @@ block main-content
                         br
                         small Views : &nbsp;
                         small=item.views
+        ul.pagination.text-center
+            if(pages)
+                -for (var i=0; i<pages; i++)
+                    if(currentPage === i)
+                        li.active
+                            a(href='/?page=' + i).btn.btn
+                                span=i
+                    else
+                        li
+                            a(href='/?page=' + i).btn.btn
+                                span=i
+
 
 
     include ../shared/footer
