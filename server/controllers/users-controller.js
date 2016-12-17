@@ -74,9 +74,9 @@ module.exports = {
         User.findById(id).populate('literature graphics comments').then(user => {
 
             let Comment = require('mongoose').model('Comment')
-            Comment.find({author: id}).populate('target').then(comments => {
+            Comment.find({author: id}).then(comments => {
                 user.comments = comments
-
+                console.log(comments.target);
                 res.render('users/profile', {user: user})
             })
 

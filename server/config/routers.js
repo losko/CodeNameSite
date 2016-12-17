@@ -11,7 +11,9 @@ module.exports = (app) => {
     app.get('/about', controllers.home.about)
 
     //Search Routes
-    app.post('/search/search', controllers.search.searchPost)
+    app.get('/search/search/:page', controllers.search.searchGet)
+    app.get('/search/search', controllers.search.searchGet)
+
 
     //User Routes
     app.get('/users/register', controllers.users.register)
@@ -31,10 +33,19 @@ module.exports = (app) => {
     app.get('/articles/create', auth.isAuthenticated, controllers.articles.create)
 
     //Graphics Routes
+    app.get('/graphics/index/:page', controllers.graphics.index)
     app.get('/graphics/index', controllers.graphics.index)
+
+    app.get('/graphics/photography/:page', controllers.graphics.photographyGet)
     app.get('/graphics/photography', controllers.graphics.photographyGet)
+
+    app.get('/graphics/drawing/:page', controllers.graphics.drawingGet)
     app.get('/graphics/drawing', controllers.graphics.drawingGet)
+
+    app.get('/graphics/threeDmodels/:page', controllers.graphics.threeDmodelsGet)
     app.get('/graphics/threeDmodels', controllers.graphics.threeDmodelsGet)
+
+    app.get('/graphics/other/:page', controllers.graphics.otherGet)
     app.get('/graphics/other', controllers.graphics.otherGet)
 
     app.post('/graphics/download/:id', controllers.graphics.downloadPost)
@@ -42,7 +53,6 @@ module.exports = (app) => {
     app.get('/graphics/create',auth.isAuthenticated,  controllers.graphics.graphicGet)
     app.post('/graphics/create',auth.isAuthenticated,  controllers.graphics.createGraphic)
 
-    app.get('/graphics/index', controllers.graphics.index)
 
     app.get('/graphics/details/:id', controllers.graphics.graphicDetails)
     app.get('/graphics/detailsReal/:id', controllers.graphics.graphicDetailsReal)
@@ -54,10 +64,19 @@ module.exports = (app) => {
     app.post('/graphics/delete/:id', auth.isAuthenticated, controllers.graphics.deletePost)
 
     //Literature Routes
+    app.get('/literature/index/:page', controllers.literatures.index)
     app.get('/literature/index', controllers.literatures.index)
+
+    app.get('/literature/poetry/:page', controllers.literatures.poetryGet)
     app.get('/literature/poetry', controllers.literatures.poetryGet)
+
+    app.get('/literature/poems/:page', controllers.literatures.poemsGet)
     app.get('/literature/poems', controllers.literatures.poemsGet)
+
+    app.get('/literature/novels/:page', controllers.literatures.novelsGet)
     app.get('/literature/novels', controllers.literatures.novelsGet)
+
+    app.get('/literature/other/:page', controllers.literatures.otherGet)
     app.get('/literature/other', controllers.literatures.otherGet)
 
     app.get('/literature/create', auth.isAuthenticated, controllers.literatures.literatureGet)

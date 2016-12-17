@@ -23,7 +23,7 @@ block main-content
         .row
             each item in literature
                 .col-sm-4
-                    a(href="/literature/details/"+item.id)
+                    a(href="/literature/details/" + item.id)
                         h2.text-center=item.name
                         .index-display
                             .inside-conteiner
@@ -39,16 +39,19 @@ block main-content
                         small=item.views
         ul.pagination.text-center
             if(pages)
+                if(currentPage !== 0)
+                    a(href='/search/search/?page=' + (currentPage - 1)).btn.btn
+                        span <<<
                 -for (var i=0; i<pages; i++)
                     if(currentPage === i)
                         li.active
-                            a(href='/?page=' + i).btn.btn
-                                span=i
+                            a(href='/search/search/?page=' + i).btn.btn
+                                span=(i + 1)
                     else
                         li
-                            a(href='/?page=' + i).btn.btn
-                                span=i
-
-
-
+                            a(href='/search/search/?page=' + i).btn.btn
+                                span=(i + 1)
+                if((currentPage + 1) < pages)
+                    a(href='/search/search/?page=' + (currentPage + 1)).btn.btn
+                        span >>>
     include ../shared/footer

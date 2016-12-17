@@ -1,24 +1,40 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Index Content
+        h1.text-center Other
         .row
-        each item in graphics
-            .col-sm-4
-                a(href="/graphics/details/" + item.id)
-                    h2.text-center=item.name
-                    .index-display-image
-                        .inside-conteiner
-                            image(src=item.image + '.png').image-display
-                            p=item.content
-                small Author : &nbsp;
-                a(href="/users/profile/" + item.author.id)
-                    span=item.author.username
-                p
-                    small Category : &nbsp;
-                    small=item.category
-                    br
-                    small Views : &nbsp;
-                    small=item.views
-
+            each item in graphics
+                .col-sm-4
+                    a(href="/graphics/details/" + item.id)
+                        h2.text-center=item.name
+                        .index-display-image
+                            .inside-conteiner
+                                image(src=item.image + '.png').image-display
+                                p=item.content
+                    small Author : &nbsp;
+                    a(href="/users/profile/" + item.author.id)
+                        span=item.author.username
+                    p
+                        small Category : &nbsp;
+                        small=item.category
+                        br
+                        small Views : &nbsp;
+                        small=item.views
+        ul.pagination.text-center
+            if(pages)
+                if(currentPage !== 0)
+                    a(href='/graphics/other/?page=' + (currentPage - 1)).btn.btn
+                        span <<<
+                -for (var i=0; i<pages; i++)
+                    if(currentPage === i)
+                        li.active
+                            a(href='/graphics/other/?page=' + i).btn.btn
+                                span=(i + 1)
+                    else
+                        li
+                            a(href='/graphics/other/?page=' + i).btn.btn
+                                span=(i + 1)
+                if((currentPage + 1) < pages)
+                    a(href='/graphics/other/?page=' + (currentPage + 1)).btn.btn
+                        span >>>
     include ../shared/footer

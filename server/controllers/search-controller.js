@@ -1,23 +1,62 @@
 const Literature = require('mongoose').model('Literature')
 const Graphic = require('mongoose').model('Graphic')
 module.exports = {
-    searchPost: (req, res) => {
+    searchGet: (req, res) => {
         "use strict";
-        let search = req.body
-        if (search.search === '') {
-            Literature.find({}).populate('author')
-                .then(resultL => {
-                    Graphic.find({}).populate('author').then(resultG => {
-                        res.render('search/search', {resultG: resultG, resultL})
+        let search = req.query.search
+        if (!search) {
+            Literature.count({}, function (err, litCount) {
+                if (err) {
+
+                } else {
+                    Graphic.count({}, function (err, grapCount) {
+                        if (err) {
+
+                        } else {
+                            let limit = 3
+                            let skip = 0
+                            let pages = Math.ceil(Math.max(litCount, grapCount) / 3)
+                            skip = parseInt(req.query.page) * limit || 0
+                            let currentPage = parseInt(req.query.page) || 0
+                            Literature.find({}).skip(skip).limit(limit).populate('author').then(literature => {
+                                Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {
+                                    graphics.page = 0
+                                    res.render('search/search', {literature: literature, graphics, pages, currentPage})
+                                })
+                            })
+                        }
                     })
-                })
+                }
+            })
         } else {
-            Literature.find({name: {$regex: search.search}}).populate('author')
-                .then(resultL => {
-                    Graphic.find({name: {$regex: search.search}}).populate('author').then(resultG => {
-                        res.render('search/search', {resultG: resultG, resultL})
+            Literature.count({name: {$regex: search}}, function (err, litCount) {
+                if (err) {
+
+                } else {
+                    Graphic.count({name: {$regex: search}}, function (err, grapCount) {
+                        if (err) {
+
+                        } else {
+                            let page = parseInt(req.query.page)
+                            if (page < 0) {
+                                page = 0
+                            }
+                            let result = search
+                            let limit = 3
+                            let skip = 0
+                            let pages = Math.ceil(Math.max(litCount, grapCount) / 3)
+                            skip = page * limit || 0
+                            let currentPage = page || 0
+                            Literature.find({name: {$regex: search}}).skip(skip).limit(limit).populate('author').then(literature => {
+                                Graphic.find({name: {$regex: search}}).skip(skip).limit(limit).populate('author').then(graphics => {
+                                    graphics.page = 0
+                                    res.render('search/search', {literature: literature, graphics, pages, currentPage, result})
+                                })
+                            })
+                        }
                     })
-                })
+                }
+            })
         }
     }
 }

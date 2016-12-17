@@ -113,41 +113,161 @@ module.exports = {
     },
     index: (req, res) => {
         "use strict";
-        Literature.find({}).populate('author')
-            .then(content => {
-                res.render('literature/index', {content: content})
-            })
+        Literature.count({}, function (err, litCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( litCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Literature.find({}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/index', {literatures: literature, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(litCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Literature.find({}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/index', {literatures: literature, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     poetryGet: (req, res) => {
         "use strict";
-        Literature.find({category: "Poetry"}).populate('author')
-            .then(poetrys => {
-                res.render('literature/poetry', {literatures: poetrys})
-            })
+        Literature.count({category: "Poetry"}, function (err, litCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( litCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Literature.find({category: "Poetry"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/poetry', {literatures: literature, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(litCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Literature.find({category: "Poetry"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/poetry', {literatures: literature, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     poemsGet: (req, res) => {
         "use strict";
-        Literature.find({category: "Poems"}).populate('author')
-            .then(poems => {
-                res.render('literature/poems', {literatures: poems})
-            })
+        Literature.count({category: "Poems"}, function (err, litCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( litCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Literature.find({category: "Poems"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/poems', {literatures: literature, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(litCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Literature.find({category: "Poems"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/poems', {literatures: literature, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     novelsGet: (req, res) => {
         "use strict";
-        Literature.find({category: "Novels"}).populate('author')
-            .then(novels => {
-                res.render('literature/novels', {literatures: novels})
-            })
+        Literature.count({category: "Novels"}, function (err, litCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( litCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Literature.find({category: "Novels"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/novels', {literatures: literature, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(litCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Literature.find({category: "Novels"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/novels', {literatures: literature, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     otherGet: (req, res) => {
         "use strict";
-        Literature.find({category: "Other"}).populate('author')
-            .then(others => {
-                res.render('literature/other', {literatures: others})
-            })
+        Literature.count({category: "Other"}, function (err, litCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( litCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Literature.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/other', {literatures: literature, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(litCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Literature.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(literature => {
+                        literature.page = 0
+                        res.render('literature/other', {literatures: literature, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     }
 }

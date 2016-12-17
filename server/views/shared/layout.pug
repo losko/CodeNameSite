@@ -107,10 +107,13 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                         a(href='/literature/novels').li-text Novels
                     li.list-group-item.list-group-item-my
                         a(href='/literature/other').li-text Other
-    form(method='post' action='/search/search').form-search-leftNav-my
+    form(method='get' action='/search/search' enctype="multipart/form-data").form-search-leftNav-my
         #custom-search-input
             .input-group.col-md-12
-                input.form-control.input-sm(type='text', placeholder='Search by name' name="search")
+                if(result)
+                    input.form-control.input-sm(type='text', placeholder='Search by name' name="search" value=""+result)
+                else
+                    input.form-control.input-sm(type='text', placeholder='Search by name' name="search")
                 span.input-group-btn
                     button.btn.btn-info.btn-sm(type='submit')
                         i.glyphicon.glyphicon-search

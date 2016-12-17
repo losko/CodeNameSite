@@ -3,20 +3,37 @@ block main-content
     .container.conteiner-my
         h1.text-center Novels
         .row
-        each item in literatures
-            .col-sm-4
-                a(href="/literature/details/" + item.id)
-                    h2.text-center=item.name
-                    .index-display
-                        .inside-conteiner
-                            p=item.content
-                small Author : &nbsp;
-                a(href="/users/profile/" + item.author.id)
-                    span=item.author.username
-                p
-                    small Category : &nbsp;
-                    small=item.category
-                    br
-                    small Views : &nbsp;
-                    small=item.views
+            each item in literatures
+                .col-sm-4
+                    a(href="/literature/details/" + item.id)
+                        h2.text-center=item.name
+                        .index-display
+                            .inside-conteiner
+                                p=item.content
+                    small Author : &nbsp;
+                    a(href="/users/profile/" + item.author.id)
+                        span=item.author.username
+                    p
+                        small Category : &nbsp;
+                        small=item.category
+                        br
+                        small Views : &nbsp;
+                        small=item.views
+        ul.pagination.text-center
+            if(pages)
+                if(currentPage !== 0)
+                    a(href='/literature/novels/?page=' + (currentPage - 1)).btn.btn
+                        span <<<
+                -for (var i=0; i<pages; i++)
+                    if(currentPage === i)
+                        li.active
+                            a(href='/literature/novels/?page=' + i).btn.btn
+                                span=(i + 1)
+                    else
+                        li
+                            a(href='/literature/novels/?page=' + i).btn.btn
+                                span=(i + 1)
+                if((currentPage + 1) < pages)
+                    a(href='/literature/novels/?page=' + (currentPage + 1)).btn.btn
+                        span >>>
     include ../shared/footer

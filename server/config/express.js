@@ -18,7 +18,6 @@ module.exports = (config, app) => {
     app.use(function (err, req, res, next) {
         if (err) {
             res.locals.errorMsg = 'File too large'
-            console.log(err);
         }
         next()
     })

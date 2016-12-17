@@ -14,7 +14,7 @@ module.exports = {
         let errorMsg = ''
         if (res.locals.errorMsg) {
             errorMsg = res.locals.errorMsg
-            res.render('graphics/create', { globalError: errorMsg })
+            res.render('graphics/create', {globalError: errorMsg})
         } else {
             let image = req.files[0]
             if (image.mimetype === 'image/jpeg' || image.mimetype === 'image/png') {
@@ -35,7 +35,7 @@ module.exports = {
                 errorMsg = "Missing Image"
             }
             if (errorMsg) {
-                res.render('graphics/create', { globalError: errorMsg })
+                res.render('graphics/create', {globalError: errorMsg})
             }
 
             graphicInput.author = req.user.id
@@ -58,10 +58,34 @@ module.exports = {
     },
     index: (req, res) => {
         "use strict";
-        Graphic.find({}).populate('author')
-            .then(graphics => {
-                res.render('graphics/index', {graphics: graphics})
-            })
+        Graphic.count({}, function (err, grapCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( grapCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/index', {graphics: graphics, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(grapCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/index', {graphics: graphics, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     graphicDetails: (req, res) => {
@@ -69,7 +93,7 @@ module.exports = {
         let id = req.params.id;
 
         Graphic.findById(id).populate('author').then(graphic => {
-            graphic.views ++
+            graphic.views++
             graphic.save()
             Comment.find({target: id}).populate('author').then(comments => {
                 graphic.comments = comments
@@ -82,8 +106,8 @@ module.exports = {
         let id = req.params.id;
         Graphic.findById(id).populate('author').then(graphic => {
 
-            let path = 'public/'+graphic.image+'.png'
-            graphic.views ++
+            let path = 'public/' + graphic.image + '.png'
+            graphic.views++
             graphic.save()
             Comment.find({target: id}).populate('author').then(comments => {
                 graphic.comments = comments
@@ -96,7 +120,7 @@ module.exports = {
         "use strict";
         let id = req.params.id;
         Graphic.findById(id).then(graphic => {
-            let path = 'public/'+graphic.image+'.png'
+            let path = 'public/' + graphic.image + '.png'
             res.download(path)
         })
     },
@@ -120,7 +144,7 @@ module.exports = {
         }
 
         if (errorMsg) {
-            res.render('Graphics/details', { globalError: errorMsg })
+            res.render('Graphics/details', {globalError: errorMsg})
         } else {
             Graphic.update({_id: id}, {
                 $set: {
@@ -147,7 +171,7 @@ module.exports = {
         "use strict";
         let id = req.params.id
         Graphic.findOneAndRemove({_id: id}).populate('author').then(graphic => {
-            let lifePath = 'public'+graphic.image+'.png'
+            let lifePath = 'public' + graphic.image + '.png'
             fs.unlinkSync(lifePath)
             graphic.prepareDelete()
 
@@ -156,33 +180,129 @@ module.exports = {
     },
     photographyGet: (req, res) => {
         "use strict";
-        Graphic.find({category: "Photography"}).populate('author')
-            .then(photography => {
-                res.render('graphics/photography', {graphics: photography})
-            })
+        Graphic.count({category: "Photography"}, function (err, grapCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( grapCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Graphic.find({category: "Photography"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/photography', {graphics: graphics, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(grapCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Graphic.find({category: "Photography"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/photography', {graphics: graphics, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     drawingGet: (req, res) => {
         "use strict";
-        Graphic.find({category: "Drawing"}).populate('author')
-            .then(drawing => {
-                res.render('graphics/drawing', {graphics: drawing})
-            })
+        Graphic.count({category: "Drawing"}, function (err, grapCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( grapCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Graphic.find({category: "Drawing"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/Drawing', {graphics: graphics, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(grapCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Graphic.find({category: "Drawing"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/Drawing', {graphics: graphics, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     threeDmodelsGet: (req, res) => {
         "use strict";
-        Graphic.find({category: "3D Models"}).populate('author')
-            .then(threeDmodels => {
-                res.render('graphics/threeDmodels', {graphics: threeDmodels})
-            })
+        Graphic.count({category: "3D Models"}, function (err, grapCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( grapCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Graphic.find({category: "3D Models"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/threeDmodels', {graphics: graphics, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(grapCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Graphic.find({category: "3D Models"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/threeDmodels', {graphics: graphics, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 
     otherGet: (req, res) => {
         "use strict";
-        Graphic.find({category: "Other"}).populate('author')
-            .then(others => {
-                res.render('graphics/other', {graphics: others})
-            })
+        Graphic.count({category: "Other"}, function (err, grapCount) {
+            if (err) {
+
+            } else {
+                if (req.session.skip !== undefined) {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil( grapCount / 3)
+                    skip = parseInt(req.query.page) * limit
+                    let currentPage = parseInt(req.query.page) || 0
+                    Graphic.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/other', {graphics: graphics, pages, currentPage})
+                    })
+                } else {
+                    let limit = 3
+                    let skip = 0
+                    let pages = Math.ceil(grapCount / 3)
+                    req.session.skip = 0
+                    let currentPage = 0
+                    Graphic.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(graphics => {
+                        graphics.page = 0
+                        res.render('graphics/other', {graphics: graphics, pages, currentPage})
+                    })
+
+                }
+            }
+        })
     },
 }

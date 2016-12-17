@@ -18,7 +18,7 @@ module.exports = {
                             let skip = 0
                             let pages = Math.ceil(Math.max(litCount, grapCount) / 3)
                             skip = parseInt(req.query.page) * limit
-                            let currentPage = parseInt(req.query.page)
+                            let currentPage = parseInt(req.query.page) || 0
                             Literature.find({}).skip(skip).limit(limit).populate('author')
                                 .then(literature => {
                                     Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {

@@ -16,7 +16,6 @@ block main-content
                     span=comment.author.username
                 p=comment.comment
                 p=comment.date
-                p=comment._id
                 p -----------------
                 if(currentUser)
                     if(currentUser.username === author.username || currentUser.username === 'Admin')
