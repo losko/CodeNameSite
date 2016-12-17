@@ -53,7 +53,7 @@ block main-content
                             h2.text-center=item.name
                             .index-display-image
                                 .inside-conteiner
-                                    p=item.content
+                                    p!=item.content
                             a(href="/users/profile/"+item.author.id)
                                 small Author : &nbsp;
                                 span=item.author.username
@@ -69,7 +69,12 @@ block main-content
                 if(user.comments)
                     each item in user.comments
                         .col-sm-4
-                            p=item.comment
+                            if(item.targetType === 'G')
+                                a(href="/graphics/details/"+item.target)
+                                    p=item.comment
+                            else
+                                a(href="/literature/details/" + item.target)
+                                    p=item.comment
                 else
                     .col-sm-4
                         h3 Not comment yet

@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 
 let commentSchema = mongoose.Schema({
-    target: { type: mongoose.Schema.Types.ObjectId, required: true, },
+    target: { type: mongoose.Schema.Types.ObjectId, required: true },
+    targetType: String,
     comment: { type: String, required: true },
     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
     date: { type: Date, default: Date.now() }
@@ -36,9 +37,6 @@ commentSchema.method({
         })
     }
 })
-
-commentSchema.set('versionKey', false);
-
 const Comment = mongoose.model('Comment', commentSchema)
 
 module.exports = Comment

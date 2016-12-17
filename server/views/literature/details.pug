@@ -7,7 +7,7 @@ block main-content
             h2(class)=name
             .details-display
                 .details-conteiner
-                    p=content
+                    p!=content
             a(href="/users/profile/"+author.id)
                 p=author.username
             p=description
@@ -15,8 +15,8 @@ block main-content
             p=date
         if(currentUser)
             if(currentUser.username === author.username || currentUser.username === 'Admin')
-                a.btn.btn-success.btn-xs(href='/literature/edit/'+id) Edit »
-                a.btn.btn-danger.btn-xs(href='/literature/delete/'+id) Delete »
-        a.btn.btn-default.btn-xs(href='/') Back »
+                a.btn.btn-success.btn-xs(href='/literature/edit/'+id) Edit
+                a.btn.btn-danger.btn-xs(href='/literature/delete/'+id) Delete
+        a.btn.btn-default.btn-xs(onClick="history.go(-1)") Back
         include ../comments/create
     include ../shared/footer

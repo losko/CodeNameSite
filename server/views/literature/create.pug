@@ -4,10 +4,10 @@ block main-content
         .container.conteiner-my
             .row
                 .col-mm-10.col-sm-offset-2
-                    h1.text-center Literature
+                    h1.text-center Create Literature
                     if (globalError)
                         h3= globalError
-                    form(class="form-login-my" method="POST" action="/literature/create")
+                    form(class="form-login-my" method="POST" action="/literature/create" enctype="multipart/form-data")
                         .form-group
                             label.label-login-my(for='category') Category
                             select(id="category" class="form-control" name="category")
@@ -18,11 +18,11 @@ block main-content
                         .form-group
                             label.label-login-my(for='literatureName') Name
                             input#literatureName.form-control(type='text' name="name" required="true")
-                        .form-group
+                        .form-group.createLit
                             label.label-login-my(for='description') Description
                             input#description.form-control(type='text' name="description")
                         .form-group
                             label(for="input-file" class="label-login-my") Content
-                            textarea(type='text' id="input-file" class="form-control" name="content" required="true")
+                            textarea(type='text' id="input-file" class="form-control" name="content" required="true" rows="20" )
                         button.btn.btn-default(type='submit') Submit
     include ../shared/footer

@@ -128,3 +128,7 @@ Added functionality for search by substring of name.
 Added pagination fot home page!
 ---
 Added pagination for all views.
+---
+Edited display style of Literature posts.
+Edited view of Literature create.
+---

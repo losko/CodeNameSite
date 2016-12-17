@@ -9,7 +9,7 @@ block main-content
                         h2.text-center=item.name
                         .index-display
                             .inside-conteiner
-                                p=item.content
+                                p!=item.content
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username

@@ -18,8 +18,8 @@ block main-content
             p=date
         if(currentUser)
             if(currentUser.username === author.username || currentUser.username === 'Admin')
-                a.btn.btn-success.btn-xs(href='/graphics/edit/'+id) Edit »
-                a.btn.btn-danger.btn-xs(href='/graphics/delete/'+id) Delete »
-        a.btn.btn-default.btn-xs(href='/') Back »
+                a.btn.btn-success.btn-xs(href='/graphics/edit/'+id) Edit
+                a.btn.btn-danger.btn-xs(href='/graphics/delete/'+id) Delete
+        a.btn.btn-default.btn-xs(onClick="history.go(-1)") Back
         include ../comments/create
     include ../shared/footer

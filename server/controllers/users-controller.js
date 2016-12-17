@@ -69,18 +69,8 @@ module.exports = {
     profileGet: (req, res) => {
         "use strict";
         let id = req.params.id;
-
-
         User.findById(id).populate('literature graphics comments').then(user => {
-
-            let Comment = require('mongoose').model('Comment')
-            Comment.find({author: id}).then(comments => {
-                user.comments = comments
-                console.log(comments.target);
-                res.render('users/profile', {user: user})
-            })
-
-
+            res.render('users/profile', {user: user})
         })
     },
 

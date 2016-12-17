@@ -10,7 +10,6 @@ module.exports = {
     createLiterature: (req, res) => {
         "use strict";
         let literatureInput = req.body
-
         let errorMsg = ''
 
         if (!req.isAuthenticated()) {
@@ -29,6 +28,7 @@ module.exports = {
         literatureInput.author = req.user.id
         literatureInput.category = req.body.category.toString()
         literatureInput.views = 0
+        literatureInput.content = literatureInput.content.replace(/\r?\n/g, '<br />')
         Literature.create(literatureInput)
             .then(literature => {
                 req.user.literature.push(literature.id)
@@ -61,6 +61,7 @@ module.exports = {
         let id = req.params.id
 
         Literature.findById(id).then(literature => {
+            literature.content = literature.content.replace(/<br \/>/g, '\r\n')
             res.render('literature/edit', literature)
         })
     },
@@ -80,6 +81,7 @@ module.exports = {
         if (errorMsg) {
             res.render('literature/edit', {error: errorMsg})
         } else {
+            literatureArgs.content = literatureArgs.content.replace(/\r?\n/g, '<br />')
             Literature.update({_id: id}, {
                 $set: {
                     name: literatureArgs.name,
@@ -99,6 +101,7 @@ module.exports = {
         let id = req.params.id
 
         Literature.findById(id).then(literature => {
+            literature.content = literature.content.replace(/<br \/>/g, '\r\n')
             res.render('literature/delete', literature)
         })
     },

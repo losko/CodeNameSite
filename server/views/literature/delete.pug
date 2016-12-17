@@ -3,7 +3,7 @@ block main-content
     main
         .container.conteiner-my
             .row
-                .col-sm-4.col-sm-offset-5
+                .col-mm-10.col-sm-offset-2
                     h1.text-center Delete Literature
                     if (globalError)
                         h3= globalError
@@ -39,7 +39,7 @@ block main-content
                             input#description.form-control(type='text' name="description" value=""+description disabled)
                         .form-group
                             label(for="input-file" class="label-login-my") Content
-                            textarea(type='text' id="input-file" class="form-control" name="content" disabled)=content
+                            textarea(type='text' id="input-file" class="form-control" name="content" rows="20"  disabled)=content
                         a(href='/literature/details/' +id).btn.btn-default Cancel
                         button.btn.btn-default(type='submit') Delete
     include ../shared/footer

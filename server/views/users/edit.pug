@@ -53,5 +53,6 @@ block main-content
                             .form-group
                                 label.label-login-my(for="email" class="label-login-my") Email
                                 input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value="" + email)
+                            button.btn.btn-default(onClick="history.go(-1)") Cancel
                             button.btn.btn-default(type='submit') Edit
     include ../shared/footer

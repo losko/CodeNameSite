@@ -13,6 +13,8 @@ module.exports = {
                 let id = commentArgs.target
                 Literature.findById(id).then(literature => {
                     if (literature) {
+                        comment.targetType = 'L'
+                        comment.save()
                         literature.comments.push(comment.id)
                         literature.save()
                         req.user.save(err => {
@@ -24,6 +26,8 @@ module.exports = {
                         })
                     } else {
                         Graphic.findById(id).then(graphic => {
+                            comment.targetType = 'G'
+                            comment.save()
                             graphic.comments.push(comment.id)
                             graphic.save()
                             req.user.save(err => {

@@ -2,13 +2,13 @@ block main-content
     .container
         h1.text-center Comments
         .row
-            form(class="form-login-my" method="POST" action="/comments/create" enctype="multipart/form-data")
+            form(class="form-login" method="POST" action="/comments/create" enctype="multipart/form-data")
                 .form-group
                     input#literatureName.form-control(type='text' name="target" value=""+id style="Display: none")
                 .form-group
-                    label(for="input-file" class="label-login-my") Comment
+                    label(for="input-file" class="label-login") Comment
                     textarea(type='text' id="input-file" class="form-control" name="comment")
-                button.btn.btn-default(type='submit') Comment
+                    button.btn.btn-primary(type='submit') Comment
         .row
             each comment in comments
                 span Commented by : &nbsp;
