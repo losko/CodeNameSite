@@ -8,7 +8,7 @@ module.exports = (app) => {
     app.get('/:page', controllers.home.index)
     app.get('/', controllers.home.index)
 
-    app.get('/about', controllers.home.about)
+    app.get('/home/about', controllers.home.about)
 
     //Search Routes
     app.get('/search/search/:page', controllers.search.searchGet)

@@ -1,15 +1,14 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Other
+        h3.text-center Other
         .row
             each item in literatures
                 .col-sm-4
                     a(href="/literature/details/" + item.id)
-                        h2.text-center=item.name
-                        .index-display
+                        h2=item.name
+                        .index-display.lit-a.shadow
                             .inside-conteiner
-                                p!=item.content
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username

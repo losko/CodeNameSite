@@ -13,54 +13,60 @@ nav.navbar.navbar-inverse.navbar-fixed-top
         .navbar-header
             a.navbar-brand(href='/') Code Name Site
         ul.nav.navbar-nav
-            li.active
-                a(href='/') Home
-            //li
-                a(href='#') Page 2
+            if(active)
+                li(class="" id="home")
+                    a(href='/') Home
+                li(id="about" class="active")
+                    a(href='/home/about') About
+            else
+                li(class="active" id="home")
+                    a(href='/') Home
+                li(id="about" onclick="setActive()")
+                    a(href='/home/about') About
         if(currentUser)
-                if(currentUser.username === "Admin")
-                    ul.nav.navbar-nav.navbar-right
-                        li.dropdown
-                            a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                                | Admin
-                                span.caret
-                            ul.dropdown-menu(role='menu')
+            if(currentUser.username === "Admin")
+                ul.nav.navbar-nav.navbar-right
+                    li.dropdown
+                        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                            | Admin
+                            span.caret
+                        ul.dropdown-menu(role='menu')
+                            li
+                                a(href='/admin/user/all') Users
+                            //li
+                                a(href='/admin/category/all') Categories
+                    li
+                        a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
+                            ul.dropdown-menu
                                 li
-                                    a(href='/admin/user/all') Users
-                                //li
-                                    a(href='/admin/category/all') Categories
-                        li
-                            a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
-                                ul.dropdown-menu
-                                    li
-                                        a(href='/graphics/create') Graphics
-                                    li
-                                        a(href='/literature/create') Literature
-                        li
-                        li
-                            a(href="/users/profile/"+currentUser.id)
-                                span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
-                        li
-                            form#logout-form(method="post" action="/users/logout")
-                            a(href="javascript:document.getElementById('logout-form').submit()") LogOut
-                                span(class="glyphicon glyphicon-log-out log-out-my")
-                else
-                    ul.nav.navbar-nav.navbar-right
-                        li
-                            a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
-                                ul.dropdown-menu
-                                    li
-                                        a(href='/graphics/create') Graphics
-                                    li
-                                        a(href='/literature/create') Literature
-                        li
-                        li
-                            a(href="/users/profile/"+currentUser.id)
-                                span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
-                        li
-                            form#logout-form(method="post" action="/users/logout")
-                            a(href="javascript:document.getElementById('logout-form').submit()") LogOut
-                                span(class="glyphicon glyphicon-log-out log-out-my")
+                                    a(href='/graphics/create') Graphics
+                                li
+                                    a(href='/literature/create') Literature
+                    li
+                    li
+                        a(href="/users/profile/" + currentUser.id)
+                            span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
+                    li
+                        form#logout-form(method="post" action="/users/logout")
+                        a(href="javascript:document.getElementById('logout-form').submit()") LogOut
+                            span(class="glyphicon glyphicon-log-out log-out-my")
+            else
+                ul.nav.navbar-nav.navbar-right
+                    li
+                        a(class="dropdown-toggle" data-toggle="dropdown" href="#") Add Content
+                            ul.dropdown-menu
+                                li
+                                    a(href='/graphics/create') Graphics
+                                li
+                                    a(href='/literature/create') Literature
+                    li
+                    li
+                        a(href="/users/profile/" + currentUser.id)
+                            span(class="glyphicon glyphicon-user user-my")= " " + currentUser.username
+                    li
+                        form#logout-form(method="post" action="/users/logout")
+                        a(href="javascript:document.getElementById('logout-form').submit()") LogOut
+                            span(class="glyphicon glyphicon-log-out log-out-my")
         else
             ul.nav.navbar-nav.navbar-right
                 li
@@ -74,44 +80,40 @@ nav.navbar.navbar-inverse.navbar-fixed-top
                 //left-navbar//
 .navbar.navbar-inverse.navbar-fixed-left
     .panel-group
-        .panel.panel-default
-            .panel-heading.list-group-item-my
-                h4.panel-title
-                    a(data-toggle='collapse', href='#collapse1') Graphics
-            #collapse1.panel-collapse.collapse
-                ul.list-group
-                    li.list-group-item.list-group-item-my
-                        a(href='/graphics/index').li-text All Graphics
-                    li.list-group-item.list-group-item-my
-                        a(href='/graphics/photography').li-text Photography
-                    li.list-group-item.list-group-item-my
-                        a(href='/graphics/drawing').li-text Drawing
-                    li.list-group-item.list-group-item-my
-                        a(href='/graphics/threeDmodels').li-text 3D Models
-                    li.list-group-item.list-group-item-my
-                        a(href='/graphics/other').li-text Other
-    .panel-group
-        .panel.panel-default
-            .panel-heading
-                h4.panel-title
-                    a(data-toggle='collapse', href='#collapse3') Literature
-            #collapse3.panel-collapse.collapse
-                ul.list-group
-                    li.list-group-item.list-group-item-my
-                        a(href='/literature/index').li-text All Literature
-                    li.list-group-item.list-group-item-my
-                        a(href='/literature/poetry').li-text Poetry
-                    li.list-group-item.list-group-item-my
-                        a(href='/literature/poems').li-text Poems
-                    li.list-group-item.list-group-item-my
-                        a(href='/literature/novels').li-text Novels
-                    li.list-group-item.list-group-item-my
-                        a(href='/literature/other').li-text Other
+        .panel-heading
+            button(data-toggle='collapse', href='#collapse1').left-bar-g
+        #collapse1.panel-collapse.collapse.my-collaps
+            ul.list-group
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/graphics/index'").photo-menu-all.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/graphics/photography'").photo-menu-graphics.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/graphics/drawing'").photo-menu-drawing.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/graphics/threeDmodels'").photo-menu-3D.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/graphics/other'").photo-menu-other.b-m
+    .panel-group-down
+        .panel-heading
+            button(data-toggle='collapse', href='#collapse3').left-bar-l
+        #collapse3.panel-collapse.collapse.my-collaps
+            ul.list-group
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/literature/index'").lit-menu-all.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/literature/poetry'").lit-menu-poetry.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/literature/poems'").lit-menu-poems.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/literature/novels'").lit-menu-novels.b-m
+                li.list-group-item.left-bar-collapse
+                    button(onclick="location.href='/literature/other'").lit-menu-other.b-m
     form(method='get' action='/search/search' enctype="multipart/form-data").form-search-leftNav-my
         #custom-search-input
             .input-group.col-md-12
                 if(result)
-                    input.form-control.input-sm(type='text', placeholder='Search by name' name="search" value=""+result)
+                    input.form-control.input-sm(type='text', placeholder='Search by name' name="search" value="" + result)
                 else
                     input.form-control.input-sm(type='text', placeholder='Search by name' name="search")
                 span.input-group-btn

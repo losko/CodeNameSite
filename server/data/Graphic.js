@@ -8,7 +8,7 @@ let graphicSchema = mongoose.Schema({
     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
     comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
     views: {type: Number},
-    date: { type: Date, default: Date.now() }
+    date: { type: String }
 })
 
 graphicSchema.method({

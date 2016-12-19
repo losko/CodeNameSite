@@ -4,7 +4,7 @@ block main-content
         .container.conteiner-my
             .row
                 .col-mm-10.col-sm-offset-2
-                    h1.text-center Delete Literature
+                    h3.text-center Delete Literature
                     if (globalError)
                         h3= globalError
                     form(class="form-login-my" method="POST" action="/literature/delete/"+id)
@@ -40,6 +40,6 @@ block main-content
                         .form-group
                             label(for="input-file" class="label-login-my") Content
                             textarea(type='text' id="input-file" class="form-control" name="content" rows="20"  disabled)=content
-                        a(href='/literature/details/' +id).btn.btn-default Cancel
+                        a(onClick="history.go(-1)").btn.btn-default Cancel
                         button.btn.btn-default(type='submit') Delete
     include ../shared/footer

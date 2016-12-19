@@ -3,7 +3,7 @@ const Graphic = require('mongoose').model('Graphic')
 module.exports = {
     searchGet: (req, res) => {
         "use strict";
-        let search = req.query.search
+        let search = req.query.search.toLowerCase()
         if (!search) {
             Literature.count({}, function (err, litCount) {
                 if (err) {
@@ -47,8 +47,8 @@ module.exports = {
                             let pages = Math.ceil(Math.max(litCount, grapCount) / 3)
                             skip = page * limit || 0
                             let currentPage = page || 0
-                            Literature.find({name: {$regex: search}}).skip(skip).limit(limit).populate('author').then(literature => {
-                                Graphic.find({name: {$regex: search}}).skip(skip).limit(limit).populate('author').then(graphics => {
+                            Literature.find({name: {$regex: search, $options: 'i'}}).skip(skip).limit(limit).populate('author').then(literature => {
+                                Graphic.find({name: {$regex: search, $options: 'i'}}).skip(skip).limit(limit).populate('author').then(graphics => {
                                     graphics.page = 0
                                     res.render('search/search', {literature: literature, graphics, pages, currentPage, result})
                                 })

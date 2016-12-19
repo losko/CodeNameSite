@@ -4,7 +4,7 @@ block main-content
         .container.conteiner-my
             .row
                 .col-mm-10.col-sm-offset-2
-                    h1.text-center Edit Literature
+                    h3.text-center Edit Literature
                     if (globalError)
                         h3= globalError
                     form(class="form-login-my" method="POST" action="/literature/edit/"+id)
@@ -40,7 +40,7 @@ block main-content
                         .form-group
                             label(for="input-file" class="label-login-my") Content
                             textarea(type='text' id="input-file" class="form-control" name="content" rows="20" )!=content
-                        a(href='/literature/details/' +id).btn.btn-default Cancel
+                        a(onClick="history.go(-1)").btn.btn-default Cancel
                         button.btn.btn-default(type='submit') Edit
 
     include ../shared/footer

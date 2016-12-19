@@ -4,7 +4,7 @@ block main-content
         .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Edit User By Admin
+                    h3.text-center Edit User By Admin
                     if (globalError)
                         h3=globalError
                         form.form-login-my(method="post" action="/admin/user/edit/"+id )
@@ -26,7 +26,8 @@ block main-content
                             .form-group
                                 label.label-login-my(for="email" class="label-login-my") Email
                                 input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value=""+user.email)
-                            button.btn.btn-default(type='submit') Register
+                            a.btn.btn-default(href="/admin/user/all") Cancel
+                            button.btn.btn-default(type='submit') Edit
                     else
                         form.form-login-my(method="post" action="/admin/user/edit/"+id enctype="multipart/form-data")
                             .form-group
@@ -47,5 +48,6 @@ block main-content
                             .form-group
                                 label.label-login-my(for="email" class="label-login-my") Email
                                 input.label-login-my(type="email" name="email" id="email" class="form-control" required="true" value="" + email)
+                            button.btn.btn-default(onClick="history.go(-1)") Cancel
                             button.btn.btn-default(type='submit') Edit
     include ../../shared/footer

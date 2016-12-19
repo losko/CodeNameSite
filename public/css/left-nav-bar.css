@@ -1,5 +1,11 @@
 body {
-    background-color: #c6dfe8;
+    background-color: rgba(22, 95, 130, 0.22);
+}
+a {
+    text-decoration: none !important;
+}
+button {
+    outline: none !important;
 }
 .navbar-fixed-left {
     width: 140px;
@@ -48,10 +54,6 @@ body {
     margin-left: 140px;
 }
 
-.panel-group{
-    margin-bottom: -5%;
-}
-
 .form-login-my {
     margin-top: 10%;
     padding: 20px;
@@ -97,9 +99,8 @@ body {
     max-width : 450px;
     max-height: 350px;
     padding: 2px;
-    border: solid;
-    border-color: #00ff8c;
-    border-radius: 10px;
+    background-color: rgba(203, 219, 227, 0.51);
+    background-image: url("../images/Text_Icon.png");
     word-wrap:  break-word;
     overflow:hidden;
 }
@@ -140,19 +141,428 @@ body {
 .image-displ {
     padding-right: 390px;
 }
-
-.list-group-item-my{
-    background-color: #808080;
+.list-group-item {
+    background-color: transparent;
+    height: 42px;
+}
+.photo-menu-all{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Graphics_All_Normal.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-all:hover{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Graphics_All_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-all:hover:active{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Graphics_All_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-graphics{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Photography_Normal.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-graphics:hover{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Photography_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-graphics:hover:active{
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Photography_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-drawing {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Drawing_Normal.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-drawing:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Drawing_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-drawing:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Drawing_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-3D {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/3D_Models_Normal.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-3D:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/3D_Models-Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-3D:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/3D_Models_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-other {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Normal.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-other:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.photo-menu-other:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-other {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Normal.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-other:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-other:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Other_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-all {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Literature_All_Normal.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-all:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Literature_All_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-all:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Literature_All_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-novels {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Novels_Normal.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-novels:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Novels_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-novels:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Novels_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poetry {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poetry_Normal.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poetry:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poetry_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poetry:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poetry_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poems {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poems_Normal.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poems:hover {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poems_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.lit-menu-poems:hover:active {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 42px;
+    background-image: url("../images/Poems_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.b-m {
+    margin-left: 3%;
+}
+.my-collaps {
+    margin-top: -22%;
+}
+.list-group-item.left-bar-collapse {
+    height: 42px;
+}
+.list-group-item {
+    border: none;
+}
+.list-group {
+    border-top: 0px solid #000 !important;
+    margin: 0;
+}
+.panel-default>.panel-heading {
+    background-color: transparent;
+    border: none;
+}
+.panel-group {
+    margin-bottom: -28px;
+}
+.panel-group-down{
+    margin-top: 15%;
+}
+.comment {
+    background-color: #c3c6e8;
+    padding: 1%;
+    margin-bottom: 1%;
+    border-radius: 20px;
+}
+.comment-text {
+    padding: 1%;
+}
+.comment-username {
+    font-size: 1.7rem;
 }
 
-.li-text {
-    color: white;
+.left-bar-g {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 61px;
+    margin-left: -12px;
+    background-image: url("../images/Graphics_Normal.png");
+    background-repeat: no-repeat;
 }
-
+.left-bar-g:hover {
+    background-image: url("../images/Graphics_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.left-bar-g:hover:active {
+    background-image: url("../images/Graphics_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.left-bar-l {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    height: 60px;
+    margin-left: -12px;
+    background-image: url("../images/Literature_Normal.png");
+    background-repeat: no-repeat;
+}
+.left-bar-l:hover {
+    background-image: url("../images/Literature_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.left-bar-l:hover:active {
+    background-image: url("../images/Literature_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.btn-a:hover{
+    text-decoration: none;
+}
+.span-lit {
+    font-size: 3rem;
+}
 .description {
     border: solid;
     border-color: #888888;
     padding: 5px;
 }
-
-
+.btn-my-download {
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    width: 160px;
+    height: 80px;
+    background-image: url("../images/Download_Normal.png");
+    background-repeat: no-repeat;
+}
+.btn-my-download:hover {
+    background-image: url("../images/Download_Normal_Hover.png");
+    background-repeat: no-repeat;
+}
+.btn-my-download:hover:active {
+    background-image: url("../images/Download_Hover_Down.png");
+    background-repeat: no-repeat;
+}
+.index-display.lit-a {
+    width: 250px;
+    height: 300px;
+}
+.shadow {
+    box-shadow: 5px 5px 10px rgba(2, 15, 10, 0.51);
+}
+.email {
+    color: blue;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.name {
+    color: brown;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}

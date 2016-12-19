@@ -29,6 +29,24 @@ module.exports = {
         literatureInput.category = req.body.category.toString()
         literatureInput.views = 0
         literatureInput.content = literatureInput.content.replace(/\r?\n/g, '<br />')
+        let today = new Date()
+        let dd = today.getDate()
+        let mm = today.getMonth()+1; //January is 0!
+        let yyyy = today.getFullYear();
+        let hh = today.getHours()
+        let m = today.getMinutes()
+        let ss = today.getSeconds()
+
+        if(dd<10) {
+            dd='0'+dd
+        }
+
+        if(mm<10) {
+            mm='0'+mm
+        }
+
+        today = mm+'-'+dd+'-'+yyyy+' / '+hh+':'+m+':'+ss;
+        literatureInput.date = today
         Literature.create(literatureInput)
             .then(literature => {
                 req.user.literature.push(literature.id)
@@ -121,9 +139,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( litCount / 3)
+                    let pages = Math.ceil( litCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Literature.find({}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -131,9 +149,9 @@ module.exports = {
                         res.render('literature/index', {literatures: literature, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(litCount / 3)
+                    let pages = Math.ceil(litCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Literature.find({}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -153,9 +171,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( litCount / 3)
+                    let pages = Math.ceil( litCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Literature.find({category: "Poetry"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -163,9 +181,9 @@ module.exports = {
                         res.render('literature/poetry', {literatures: literature, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(litCount / 3)
+                    let pages = Math.ceil(litCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Literature.find({category: "Poetry"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -185,9 +203,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( litCount / 3)
+                    let pages = Math.ceil( litCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Literature.find({category: "Poems"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -195,9 +213,9 @@ module.exports = {
                         res.render('literature/poems', {literatures: literature, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(litCount / 3)
+                    let pages = Math.ceil(litCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Literature.find({category: "Poems"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -217,9 +235,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( litCount / 3)
+                    let pages = Math.ceil( litCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Literature.find({category: "Novels"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -227,9 +245,9 @@ module.exports = {
                         res.render('literature/novels', {literatures: literature, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(litCount / 3)
+                    let pages = Math.ceil(litCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Literature.find({category: "Novels"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -249,9 +267,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( litCount / 3)
+                    let pages = Math.ceil( litCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Literature.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(literature => {
@@ -259,9 +277,9 @@ module.exports = {
                         res.render('literature/other', {literatures: literature, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(litCount / 3)
+                    let pages = Math.ceil(litCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Literature.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(literature => {

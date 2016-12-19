@@ -42,6 +42,24 @@ module.exports = {
             graphicInput.category = req.body.category.toString()
             graphicInput.image = '/uploads/' + image.filename
             graphicInput.views = 0
+            let today = new Date()
+            let dd = today.getDate()
+            let mm = today.getMonth()+1; //January is 0!
+            let yyyy = today.getFullYear();
+            let hh = today.getHours()
+            let m = today.getMinutes()
+            let ss = today.getSeconds()
+
+            if(dd<10) {
+                dd='0'+dd
+            }
+
+            if(mm<10) {
+                mm='0'+mm
+            }
+
+            today = mm+'-'+dd+'-'+yyyy+' / '+hh+':'+m+':'+ss;
+            graphicInput.date = today
             Graphic.create(graphicInput)
                 .then(graphic => {
                     req.user.graphics.push(graphic.id)
@@ -63,9 +81,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( grapCount / 3)
+                    let pages = Math.ceil( grapCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -73,9 +91,9 @@ module.exports = {
                         res.render('graphics/index', {graphics: graphics, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(grapCount / 3)
+                    let pages = Math.ceil(grapCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Graphic.find({}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -185,9 +203,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( grapCount / 3)
+                    let pages = Math.ceil( grapCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Graphic.find({category: "Photography"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -195,9 +213,9 @@ module.exports = {
                         res.render('graphics/photography', {graphics: graphics, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(grapCount / 3)
+                    let pages = Math.ceil(grapCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Graphic.find({category: "Photography"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -217,9 +235,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( grapCount / 3)
+                    let pages = Math.ceil( grapCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Graphic.find({category: "Drawing"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -227,9 +245,9 @@ module.exports = {
                         res.render('graphics/Drawing', {graphics: graphics, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(grapCount / 3)
+                    let pages = Math.ceil(grapCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Graphic.find({category: "Drawing"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -249,9 +267,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( grapCount / 3)
+                    let pages = Math.ceil( grapCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Graphic.find({category: "3D Models"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -259,9 +277,9 @@ module.exports = {
                         res.render('graphics/threeDmodels', {graphics: graphics, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(grapCount / 3)
+                    let pages = Math.ceil(grapCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Graphic.find({category: "3D Models"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -281,9 +299,9 @@ module.exports = {
 
             } else {
                 if (req.session.skip !== undefined) {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil( grapCount / 3)
+                    let pages = Math.ceil( grapCount / 6)
                     skip = parseInt(req.query.page) * limit
                     let currentPage = parseInt(req.query.page) || 0
                     Graphic.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(graphics => {
@@ -291,9 +309,9 @@ module.exports = {
                         res.render('graphics/other', {graphics: graphics, pages, currentPage})
                     })
                 } else {
-                    let limit = 3
+                    let limit = 6
                     let skip = 0
-                    let pages = Math.ceil(grapCount / 3)
+                    let pages = Math.ceil(grapCount / 6)
                     req.session.skip = 0
                     let currentPage = 0
                     Graphic.find({category: "Other"}).skip(skip).limit(limit).populate('author').then(graphics => {

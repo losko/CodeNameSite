@@ -1,12 +1,13 @@
 extends ../shared/layout
 block main-content
     .container
-        h1.text-center Comments
+        h3.text-center Comments
         .row
-            form(class="form-login-my" method="post" )
+            form( method="post" )
                 .form-group
                     input#literatureName.form-control(type='text' name="target" value=""+comment._id style="Display: none")
                 .form-group
-                    label(for="input-file" class="label-login-my") Comment
-                    textarea(type='text' id="input-file" class="form-control" name="comment")=comment
+                    label(for="input-file") Comment
+                    textarea(type='text' id="input-file" class="form-control" name="comment" rows="5")=comment
+                button.btn.btn-default(type='submit' onClick="history.go(-1)") Cancel
                 button.btn.btn-default(type='submit') Edit

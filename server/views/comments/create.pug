@@ -1,23 +1,27 @@
 block main-content
     .container
-        h1.text-center Comments
+        h3.text-center Comments
         .row
-            form(class="form-login" method="POST" action="/comments/create" enctype="multipart/form-data")
+            form(method="POST" action="/comments/create" enctype="multipart/form-data")
                 .form-group
                     input#literatureName.form-control(type='text' name="target" value=""+id style="Display: none")
                 .form-group
-                    label(for="input-file" class="label-login") Comment
-                    textarea(type='text' id="input-file" class="form-control" name="comment")
-                    button.btn.btn-primary(type='submit') Comment
+                    label(for="input-file") Comment
+                    textarea(type='text' id="input-file" class="form-control" name="comment" rows="5")
+                    button.btn.btn-default(type='submit') Comment
+                br
+                br
         .row
             each comment in comments
-                span Commented by : &nbsp;
-                a(href="/users/profile/"+comment.author.id)
-                    span=comment.author.username
-                p=comment.comment
-                p=comment.date
-                p -----------------
-                if(currentUser)
-                    if(currentUser.username === author.username || currentUser.username === 'Admin')
-                        a.btn.btn-success.btn-xs(href='/comment/edit/'+comment._id) Edit
-                        a.btn.btn-danger.btn-xs(href='/comment/delete/'+comment._id) Delete
+                .comment
+                    br
+                    a(href="/users/profile/"+comment.author.id)
+                        span(class="comment-username")=comment.author.username
+                    span &nbsp;
+                    span=comment.date
+                    p(class="comment-text")!=comment.comment
+                    if(currentUser)
+                        if(currentUser.username === comment.author.username || currentUser.username === 'Admin')
+                            a.btn.btn-success.btn-xs(href='/comment/edit/'+comment._id) Edit
+                            a.btn.btn-danger.btn-xs(href='/comment/delete/'+comment._id) Delete
+                    p -----------------

@@ -4,7 +4,7 @@ block main-content
         .container.conteiner-my
             .row
                 .col-sm-4.col-sm-offset-5
-                    h1.text-center Log In
+                    h3.text-center Log In
                     if (globalError)
                         h3= globalError
                     form(class="form-login-my" method="post" action="/users/authenticate")

@@ -1,7 +1,7 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Index Content
+        h3.text-center Code Name Site
         .row
             each item in graphics
                 .col-sm-4
@@ -9,7 +9,7 @@ block main-content
                         h2.text-center=item.name
                         .index-display-image
                             .inside-conteiner
-                                image(src=item.image + '.png').image-display
+                                image(src=item.image + '.png').image-display.shadow
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username
@@ -23,10 +23,9 @@ block main-content
             each item in literature
                 .col-sm-4
                     a(href="/literature/details/" + item.id)
-                        h2.text-center=item.name
-                        .index-display
+                        h2=item.name
+                        .index-display.lit-a.shadow
                             .inside-conteiner
-                                p!=item.content
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username
@@ -39,18 +38,18 @@ block main-content
         ul.pagination.text-center
             if(pages)
                 if(currentPage !== 0)
-                    a(href='/search/search/?page=' + (currentPage - 1)).btn.btn
+                    a(href='/?page=' + (currentPage - 1)).btn.btn
                         span <<<
                 -for (var i=0; i<pages; i++)
                     if(currentPage === i)
                         li.active
-                            a(href='/search/search/?page=' + i).btn.btn
+                            a(href='/?page=' + i).btn.btn
                                 span=(i + 1)
                     else
                         li
-                            a(href='/search/search/?page=' + i).btn.btn
+                            a(href='/?page=' + i).btn.btn
                                 span=(i + 1)
                 if((currentPage + 1) < pages)
-                    a(href='/search/search/?page=' + (currentPage + 1)).btn.btn
+                    a(href='/?page=' + (currentPage + 1)).btn.btn
                         span >>>
     include ../shared/footer

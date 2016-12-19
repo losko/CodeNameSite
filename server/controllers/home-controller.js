@@ -49,6 +49,7 @@ module.exports = {
     },
     about: (req, res) => {
         "use strict";
-        res.render('home/about')
+        let active = 'active'
+        res.render('home/about', {active: active})
     }
 }

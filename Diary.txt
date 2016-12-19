@@ -132,3 +132,9 @@ Added pagination for all views.
 Edited display style of Literature posts.
 Edited view of Literature create.
 ---
+Added folder public/images to contain image for design.
+Added images for buttons and other design.
+Edited about page.
+Fixed redirect after edit comment.
+Edited design.
+---

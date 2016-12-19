@@ -1,7 +1,7 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Search Content
+        h3.text-center Search Result
         .row
             each item in graphics
                 .col-sm-4
@@ -9,8 +9,7 @@ block main-content
                         h2.text-center=item.name
                         .index-display-image
                             .inside-conteiner
-                                image(src=item.image + '.png').image-display
-                                p=item.content
+                                image(src=item.image + '.png').image-display.shadow
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username
@@ -24,10 +23,9 @@ block main-content
             each item in literature
                 .col-sm-4
                     a(href="/literature/details/" + item.id)
-                        h2.text-center=item.name
-                        .index-display
+                        h2=item.name
+                        .index-display.lit-a.shadow
                             .inside-conteiner
-                                p=item.content
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username

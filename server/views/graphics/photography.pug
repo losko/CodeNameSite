@@ -1,7 +1,7 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center Photography
+        h3.text-center Photography
         .row
             each item in graphics
                 .col-sm-4
@@ -9,7 +9,7 @@ block main-content
                         h2.text-center=item.name
                         .index-display-image
                             .inside-conteiner
-                                image(src=item.image + '.png').image-display
+                                image(src=item.image + '.png').image-display.shadow
                                 p=item.content
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)

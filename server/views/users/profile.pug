@@ -1,7 +1,7 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h1.text-center=user.username+' Profile'
+        h3.text-center=user.username+' Profile'
         if (globalError)
             h3=globalError
         .row
@@ -33,7 +33,7 @@ block main-content
                             h2.text-center=item.name
                             .index-display-image
                                 .inside-conteiner
-                                    image(src=item.image+'.png').image-display
+                                    image(src=item.image+'.png').image-display.shadow
                                     p=item.content
                             a(href="/users/profile/"+item.author.id)
                                 small Author : &nbsp;
@@ -50,13 +50,10 @@ block main-content
                 each item in user.literature
                     .col-sm-4
                         a(href="/literature/details/" + item.id)
-                            h2.text-center=item.name
-                            .index-display-image
+                            h2=item.name
+                            .index-display.lit-a.shadow
                                 .inside-conteiner
-                                    p!=item.content
                             a(href="/users/profile/"+item.author.id)
-                                small Author : &nbsp;
-                                span=item.author.username
                             p
                                 small Category : &nbsp;
                                 small=item.category
@@ -68,13 +65,13 @@ block main-content
                 h2 Comments
                 if(user.comments)
                     each item in user.comments
-                        .col-sm-4
+                        .col-sm-4.comment
                             if(item.targetType === 'G')
                                 a(href="/graphics/details/"+item.target)
-                                    p=item.comment
+                                    p!=item.comment
                             else
                                 a(href="/literature/details/" + item.target)
-                                    p=item.comment
+                                    p!=item.comment
                 else
                     .col-sm-4
                         h3 Not comment yet

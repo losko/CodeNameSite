@@ -10,10 +10,10 @@ block main-content
                 image(src=image+'.png').image-details-display
             .form-group
                 form(method="post" action="/graphics/download/"+id).text-center
-                    button.btn.btn-default(type='submit') Download
+                    button.btn-down-my.btn-my-download(type="submit")
             a(href="/users/profile/"+author.id)
                 p=author.username
-            p.description=description
+            p=description
             p=category
             p=date
         if(currentUser)

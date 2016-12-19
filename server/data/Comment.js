@@ -5,7 +5,8 @@ let commentSchema = mongoose.Schema({
     targetType: String,
     comment: { type: String, required: true },
     author: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
-    date: { type: Date, default: Date.now() }
+    date: { type: String, }
+    //default: Date.now()
 })
 
 commentSchema.method({

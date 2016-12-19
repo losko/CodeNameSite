@@ -6,6 +6,5 @@ block main-content
                 h2(class="text-center")=name
                 .details-display
                     .details-conteiner
-                        a(href=href="/graphics/details/"+id)
-                            image(src=image+'.png').image-display-max
+                        image(src=image + '.png' onClick="history.go(-1)").image-display-max
     include ../shared/footer

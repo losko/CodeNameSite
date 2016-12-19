@@ -4,7 +4,7 @@ block main-content
         .container.conteiner-my
             .row
                 .col-mm-10.col-sm-offset-2
-                    h1.text-center Create Literature
+                    h3.text-center Create Literature
                     if (globalError)
                         h3= globalError
                     form(class="form-login-my" method="POST" action="/literature/create" enctype="multipart/form-data")
@@ -25,4 +25,5 @@ block main-content
                             label(for="input-file" class="label-login-my") Content
                             textarea(type='text' id="input-file" class="form-control" name="content" required="true" rows="20" )
                         button.btn.btn-default(type='submit') Submit
+                        button.btn.btn-default(onClick="history.go(-1)") Cancel
     include ../shared/footer
