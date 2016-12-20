@@ -1,15 +1,16 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h3.text-center Code Name Site
+        h2.text-center.heading-main Code Name Site
         .row
             each item in graphics
                 .col-sm-4
                     a(href="/graphics/details/" + item.id)
-                        h2.text-center=item.name
+                        h3.text-center=item.name
                         .index-display-image
                             .inside-conteiner
                                 image(src=item.image + '.png').image-display.shadow
+                    br
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username
@@ -23,9 +24,10 @@ block main-content
             each item in literature
                 .col-sm-4
                     a(href="/literature/details/" + item.id)
-                        h2=item.name
+                        h3=item.name
                         .index-display.lit-a.shadow
                             .inside-conteiner
+                    br
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username

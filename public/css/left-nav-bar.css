@@ -1,5 +1,7 @@
 body {
     background-color: rgba(22, 95, 130, 0.22);
+    font-family: "Britannic Bold";
+    font-size: 1.7rem;
 }
 a {
     text-decoration: none !important;
@@ -252,7 +254,7 @@ button {
     cursor: pointer;
     width: 140px;
     height: 42px;
-    background-image: url("../images/3D_Models-Normal_Hover.png");
+    background-image: url("../images/3D_Models_Normal_Hover.png");
     background-repeat: no-repeat;
 }
 .photo-menu-3D:hover:active {
@@ -557,6 +559,10 @@ button {
 }
 .shadow {
     box-shadow: 5px 5px 10px rgba(2, 15, 10, 0.51);
+}
+.heading-main {
+    color: black;
+
 }
 .email {
     color: blue;

@@ -1,3 +1,4 @@
+//Require modules for the app.
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
@@ -12,9 +13,11 @@ module.exports = (config, app) => {
     app.use(cookieParser())
     app.use(bodyParser.urlencoded({ extended: true}))
     app.use(session({ secret: 'neshto-taino!@#$%', resave: true, saveUninitialized: true}))
+    //set up multer for upload images.
     app.use(multer({dest: 'public/uploads',
         limits: { fileSize: 1000000 }
     }).any())
+    //Chech for error in image upload
     app.use(function (err, req, res, next) {
         if (err) {
             res.locals.errorMsg = 'File too large'

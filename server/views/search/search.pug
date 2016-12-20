@@ -1,12 +1,12 @@
 extends ../shared/layout
 block main-content
     .container.conteiner-my
-        h3.text-center Search Result
+        h2.text-center Search Result
         .row
             each item in graphics
                 .col-sm-4
                     a(href="/graphics/details/" + item.id)
-                        h2.text-center=item.name
+                        h3.text-center=item.name
                         .index-display-image
                             .inside-conteiner
                                 image(src=item.image + '.png').image-display.shadow
@@ -26,6 +26,7 @@ block main-content
                         h2=item.name
                         .index-display.lit-a.shadow
                             .inside-conteiner
+                    br
                     small Author : &nbsp;
                     a(href="/users/profile/" + item.author.id)
                         span=item.author.username

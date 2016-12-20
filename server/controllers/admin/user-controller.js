@@ -2,12 +2,14 @@ let encryption = require('../../utilities/encryption')
 const User = require('mongoose').model('User')
 
 module.exports = {
+    //Render all registered users.
     all: (req, res) => {
         "use strict";
         User.find({}).then(users => {
             res.render('admin/user/all', {users: users})
         })
     },
+    //Render form for edit user data.
     editGet: (req, res) => {
         "use strict";
         let id = req.params.id
@@ -15,6 +17,7 @@ module.exports = {
             res.render('admin/user/edit', user)
         })
     },
+    //Send to db edited user data.
     editPost: (req, res) => {
         "use strict";
         let inputUser = req.body

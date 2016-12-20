@@ -138,3 +138,5 @@ Edited about page.
 Fixed redirect after edit comment.
 Edited design.
 ---
+Fixed view problems.
+---
