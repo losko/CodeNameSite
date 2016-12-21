@@ -142,3 +142,5 @@ Fixed view problems.
 ---
 Fixed display of comment befor delete.
 ---
+Fixed error hendling for duplicate email in registration.
+---

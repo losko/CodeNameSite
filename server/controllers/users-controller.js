@@ -12,25 +12,49 @@ module.exports = {
 
             } else if (person) {
                 res.render('users/register', {globalError: 'Username already exist'})
-            }
-            else {
-                if (user.password !== user.confirmPassword) {
-                    user.globalError = 'Passwords do not match!'
-                    res.render('users/register', user)
-                } else {
-                    user.salt = encryption.generateSalt()
-                    user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
+            } else {
+                User.findOne({email: user.email}, function (err, email) {
+                    if (err) {
 
-                    User.create(user).then(user => {
-                        req.logIn(user, (err) => {
-                            if (err) {
-                                res.render('users/register', {globalError: 'Ooops 500'})
-                                return
-                            }
-                            res.redirect('/')
-                        })
-                    })
-                }
+                    } else if (email) {
+                        res.render('users/register', {globalError: 'Email already exist'})
+                    } else {
+                        if (user.password !== user.confirmPassword) {
+                            user.globalError = 'Passwords do not match!'
+                            res.render('users/register', user)
+                        } else {
+                            user.salt = encryption.generateSalt()
+                            user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
+
+                            User.create(user).then(user => {
+                                req.logIn(user, (err) => {
+                                    if (err) {
+                                        res.render('users/register', {globalError: 'Ooops 500'})
+                                        return
+                                    }
+                                    res.redirect('/')
+                                })
+                            })
+                        }
+                    }
+                })
+                /*if (user.password !== user.confirmPassword) {
+                 user.globalError = 'Passwords do not match!'
+                 res.render('users/register', user)
+                 } else {
+                 user.salt = encryption.generateSalt()
+                 user.hashedPass = encryption.generateHashedPassword(user.salt, user.password)
+
+                 User.create(user).then(user => {
+                 req.logIn(user, (err) => {
+                 if (err) {
+                 res.render('users/register', {globalError: 'Ooops 500'})
+                 return
+                 }
+                 res.redirect('/')
+                 })
+                 })
+                 }*/
             }
 
 
@@ -106,7 +130,7 @@ module.exports = {
                     } else if (username.username || username[0]) {
                         if (username[0].username !== user.username) {
                             res.render('users/edit', {globalError: 'Username already exist', user})
-                        } else if (username[0].username === user.username){
+                        } else if (username[0].username === user.username) {
                             User.find({email: inputUser.email}, function (err, email) {
                                 if (err) {
                                     console.log('err');
