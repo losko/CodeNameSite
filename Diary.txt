@@ -140,3 +140,5 @@ Edited design.
 ---
 Fixed view problems.
 ---
+Fixed display of comment befor delete.
+---

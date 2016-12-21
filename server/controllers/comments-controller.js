@@ -106,6 +106,7 @@ module.exports = {
         "use strict";
         let id = req.params._id
         Comment.findById(id).then(comment => {
+            comment.comment = comment.comment.replace(/<br \/>/g, '\r\n')
             res.render('comments/delete', comment)
         })
 
