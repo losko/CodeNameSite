@@ -77,10 +77,14 @@ module.exports = {
     editGet: (req, res) => {
         "use strict";
         let id = req.params.id
-
-        Literature.findById(id).then(literature => {
-            literature.content = literature.content.replace(/<br \/>/g, '\r\n')
-            res.render('literature/edit', literature)
+        let isUser = req.user.username
+        Literature.findById(id).populate('author').then(literature => {
+            if (isUser === literature.author.username || isUser === 'Admin') {
+                literature.content = literature.content.replace(/<br \/>/g, '\r\n')
+                res.render('literature/edit', literature)
+            } else {
+                res.redirect('/users/login')
+            }
         })
     },
 
@@ -117,10 +121,15 @@ module.exports = {
     deleteGet: (req, res) => {
         "use strict";
         let id = req.params.id
+        let isUser = req.user.username
+        Literature.findById(id).populate('author').then(literature => {
+            if (isUser === literature.author.username || isUser === 'Admin') {
+                literature.content = literature.content.replace(/<br \/>/g, '\r\n')
+                res.render('literature/delete', literature)
+            } else {
+                res.redirect('/users/login')
+            }
 
-        Literature.findById(id).then(literature => {
-            literature.content = literature.content.replace(/<br \/>/g, '\r\n')
-            res.render('literature/delete', literature)
         })
     },
 

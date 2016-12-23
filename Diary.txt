@@ -144,3 +144,5 @@ Fixed display of comment befor delete.
 ---
 Fixed error hendling for duplicate email in registration.
 ---
+Added check if edit or delete get request is makeed from the author ot the content.
+---

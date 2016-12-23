@@ -145,9 +145,15 @@ module.exports = {
     editGet: (req, res) => {
         "use strict";
         let id = req.params.id
+        let isUser = req.user.username
+        Graphic.findById(id).populate('author').then(graphic => {
+            console.log(graphic.author.username);
+            if (isUser === graphic.author.username || isUser === 'Admin') {
+                res.render('graphics/edit', graphic)
+            } else {
+                res.redirect('/users/login')
+            }
 
-        Graphic.findById(id).then(graphic => {
-            res.render('graphics/edit', graphic)
         })
     },
 
@@ -179,9 +185,13 @@ module.exports = {
     deleteGet: (req, res) => {
         "use strict";
         let id = req.params.id
-
-        Graphic.findById(id).then(graphic => {
-            res.render('graphics/delete', graphic)
+        let isUser = req.user.username
+        Graphic.findById(id).populate('author').then(graphic => {
+            if (isUser === graphic.author.username || isUser === 'Admin') {
+                res.render('graphics/delete', graphic)
+            } else {
+                res.redirect('/users/login')
+            }
         })
     },
 

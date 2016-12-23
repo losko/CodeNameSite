@@ -66,9 +66,14 @@ module.exports = {
     editGet: (req, res) => {
         "use strict";
         let id = req.params._id
-        Comment.findById(id).then(comment => {
-            comment.comment = comment.comment.replace(/<br \/>/g, '\r\n')
-            res.render('comments/edit', comment)
+        let isUser = req.user.username
+        Comment.findById(id).populate('author').then(comment => {
+            if (isUser === comment.author.username || isUser === 'Admin') {
+                comment.comment = comment.comment.replace(/<br \/>/g, '\r\n')
+                res.render('comments/edit', comment)
+            } else {
+                res.redirect('/users/login')
+            }
         })
 
     },
@@ -105,9 +110,16 @@ module.exports = {
     deleteGet: (req, res) => {
         "use strict";
         let id = req.params._id
-        Comment.findById(id).then(comment => {
-            comment.comment = comment.comment.replace(/<br \/>/g, '\r\n')
-            res.render('comments/delete', comment)
+        let isUser = req.user.username
+        Comment.findById(id).populate('author').then(comment => {
+            if (isUser === comment.author.username || isUser === 'Admin') {
+                comment.comment = comment.comment.replace(/<br \/>/g, '\r\n')
+                res.render('comments/delete', comment)
+            } else {
+                res.redirect('/users/login')
+            }
+
+
         })
 
     },
